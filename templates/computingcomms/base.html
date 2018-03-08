@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 <head>
-	<link rel="stylesheet_index" type="text/css" href="{% static "CSS/stylesheet_index.css" %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "CSS/stylesheet.css" %}"/>
 </head>
 
 <html>
@@ -12,17 +12,22 @@
 				Computing Comms
 			{% endblock %}
 		</title>
+		
+		{% block head_block %}
+		{% endblock %}
+		
 	</head>
+	
 	<body>
-		<div>
+		<div class ="sidenav">
 			{% block sidebar_block %}
 				<ul>
-					<li><a href="{% url 'home' %}">Home</a></li>
-					<li><a href="{% url 'quizzes' %}">Quizzes</a></li>
-					<li><a href="{% url 'forum' %}">Forum</a></li>
-					<li><a href="{% url 'about_us' %}">About Us</a></li>
-					<li><a href="{% url 'contact_us' %}">Contact Us</a></li>
-					<li><a href="{% url 'faq' %}">FAQ</a></li>
+					<a href="{% url 'home' %}">Home</a>
+					<a href="{% url 'quizzes' %}">Quizzes</a>
+					<a href="{% url 'forum' %}">Forum</a>
+					<a href="{% url 'about_us' %}">About Us</a>
+					<a href="{% url 'contact_us' %}">Contact Us</a>
+					<a href="{% url 'faq' %}">FAQ</a>
                 </ul>
 			{% endblock %}
 		</div>

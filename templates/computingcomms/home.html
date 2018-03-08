@@ -2,30 +2,32 @@
 {% load staticfiles %}
 
 <head>
-	<link rel="stylesheet_index" type="text/css" href="{% static "CSS/stylesheet_index.css" %}"/>
+	<link rel="stylesheet_index" type="text/css" href="/static/CSS/stylesheet_index.css"/>
 </head>
 
 {% block title_block %}
 	Computing Comms
 {% endblock %}
 
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+	</div>
+{% endblock %}
 
 {% block body_block %}
+	
 	<div>
-	<center><h1>Computing Comms</h1></center>
-	</div>
-
-	<div>
-	<centre> <table>
+	<center> <table cellpadding="15"> 
 		<tr>
-			<td> <a href="{% url 'login' %}"> class="btn btn-default"> Login </a> </td>
-			<td> <a href="{% url 'register' %}"> class="button"> Sign up </a> </td>
+			<td> <a href="{% url 'login' %}"> <button class="button"> Login </a> </button> </td>
+			<td> <a href="{% url 'register' %}"> <button class="button"> Sign up </a> </button> </td>
 		</tr>
 		<tr>
-			<td> <a href="{% url 'quizzes' %}"> class="button"> Test your knowledge </a> </td>
-			<td> <a href="{% url 'forum' %}"> class="button"> Ask a question </a> </td>
+			<td> <a href="{% url 'quizzes' %}"> <button class="button"> Test your knowledge </a> </button> </td>
+			<td> <a href="{% url 'forum' %}"> <button class="button"> Ask a question </a> </button> </td>
 		</tr>
 	</center> </table>
 	</div>
- {% endblock %}
+{% endblock %}
 	

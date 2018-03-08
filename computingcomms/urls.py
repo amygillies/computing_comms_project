@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^mycomments/', views.my_comments, name='mycomments'),
     url(r'^faq.', views.faq, name='faq'),
     url(r'^forum', views.forum, name='forum'),
+    url(r'^register', views.register, name='register'),
 ]
