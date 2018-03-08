@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from computingcomms.forms import UserForm, UserProfileForm
 
 # Create your views here.
 def home(request):
@@ -35,11 +36,8 @@ def af2(request):
 def forum(request):
     return HttpResponse("Computing Comms - Forum")
 
-def about(request):
-    return HttpResponse("Computing Comms - About Us")
-
 def contact(request):
-    return HttpResponse("Computing Comms - Contact Us")
+     return render(request, 'computingcomms/contact_us.html', {})
 
 def faq(request):
     return HttpResponse("Computing Comms - Frequently Asked Questions")
@@ -51,7 +49,34 @@ def my_account(request):
     return HttpResponse("Computing Comms - My Account")
 
 def register(request):
-    return HttpResponse("Computing Comms - Register")
+    registered = False
+
+    if request.method == 'POST':
+
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+
+            profile.save()
+            registered = True
+        else:
+            print(user_form.errors, profile_form.errors)
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+        
+    return render(request, 'computingcomms/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 def my_questions(request):
     return HttpResponse("Computing Comms - My Questions")
