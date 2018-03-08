@@ -12,7 +12,7 @@ def about(request):
     return HttpResponse("Computing Comms - About")
 
 def quizzes(request):
-    return HttpResponse("Computing Comms - Quizzes")
+    return render(request, 'computingcomms/quizzes.html', {})
 
 def jp2(request):
     return HttpResponse("Computing Comms - Java Programming 2 Quiz")
