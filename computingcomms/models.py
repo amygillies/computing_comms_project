@@ -15,18 +15,24 @@ class Quiz(models.Model):
         return self.subject
     
 class Question(models.Model):
-    name = models.CharField(max_length=128,unique=True)
+    name = models.CharField(max_length=128)
     content = models.CharField(max_length=256)
     quiz = models.ForeignKey(Quiz)
+
+    class Meta:
+        unique_together = (('quiz','name'),)
 
     def __str__(self):
         return self.name
 
 class Answer(models.Model):
-    answerID = models.CharField(max_length=4, unique=True)
+    answerID = models.CharField(max_length=4)
     content = models.CharField(max_length=256)
     correct = models.BooleanField(default = False)
     question = models.ForeignKey(Question)
+
+    class Meta:
+        unique_together = (('question','answerID'),)
 
     def __str__(self):
         return self.answerID

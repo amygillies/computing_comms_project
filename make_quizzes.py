@@ -12,12 +12,12 @@ def populate():
                  "0001": {"correct":True, "content":"A programming Language"}
                  }
 
-    WAD2Q1ANS = {"0002":{"correct":True, "content":"A programme used to browse the internet"},
-                 "0003":{"correct":False, "content":"An enemy in Mario"}}
+    WAD2Q1ANS = {"0000":{"correct":True, "content":"A programme used to browse the internet"},
+                 "0001":{"correct":False, "content":"An enemy in Mario"}}
     
     OOSEQuestions = {"Question 1":{"answers":OOSEQ1ANS,"content":"What is java in the context of CS?"}}
     
-    WAD2Questions = {"Question 2":{"answers":WAD2Q1ANS,"content":"What is a browser?"}}
+    WAD2Questions = {"Question 1":{"answers":WAD2Q1ANS,"content":"What is a browser?"}}
 
     quizzes = {"OOSE Quiz 1": {"questions":OOSEQuestions,"ID":"0000","subject":"OOSE"},
                "WAD2 Quiz 1": {"questions":WAD2Questions, "ID":"0001", "subject":"WAD2"}
