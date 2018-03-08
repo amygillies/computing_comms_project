@@ -9,10 +9,10 @@ def home(request):
     return render(request, 'computingcomms/home.html', {})
 
 def about(request):
-    return HttpResponse("Computing Comms - About")
+    return render(request, 'computingcomms/about_us.html', {})
 
 def quizzes(request):
-    return HttpResponse("Computing Comms - Quizzes")
+    return render(request, 'computingcomms/quizzes.html', {})
 
 def jp2(request):
     return HttpResponse("Computing Comms - Java Programming 2 Quiz")
