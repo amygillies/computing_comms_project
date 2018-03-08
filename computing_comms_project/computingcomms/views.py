@@ -9,7 +9,7 @@ def home(request):
     return render(request, 'computingcomms/home.html', {})
 
 def about(request):
-    return HttpResponse("Computing Comms - About")
+    return render(request, 'computingcomms/about_us.html', {})
 
 def quizzes(request):
     return render(request, 'computingcomms/quizzes.html', {})
