@@ -1,0 +1,41 @@
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet_index" type="text/css" href="/static/CSS/stylesheet_index.css"/>
+</head>
+
+{% block title_block %}
+	Computing Comms - Register
+{% endblock %}
+
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+	</div>
+	<div>
+		<center><h2>Sign Up</h2></center>
+	</div>
+{% endblock %}
+
+
+
+{% block body_block %}
+<center>
+
+{% if registered %}
+	Thanks for registering!
+        <a href= "{% url 'home' %}">Return to the homepage.</a><br>
+{% else %}
+	Register here!
+	<form id = "user_form" method = "post" action = "{% url 'register' %} enctype = "multipart/form-data">
+	
+	{% csrf_token %}
+	{{ user_form.as_p }}
+	{{ profile_form.as_p }}
+
+	<input type = "submit" name= "submit" value = "Register" />
+	</form>
+{% endif %}
+</center>
+{% endblock %}
