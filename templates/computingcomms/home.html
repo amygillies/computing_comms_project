@@ -1,0 +1,31 @@
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet_index" type="text/css" href="{% static "CSS/stylesheet_index.css" %}"/>
+</head>
+
+{% block title_block %}
+	Computing Comms
+{% endblock %}
+
+
+{% block body_block %}
+	<div>
+	<center><h1>Computing Comms</h1></center>
+	</div>
+
+	<div>
+	<centre> <table>
+		<tr>
+			<td> <a href="{% url 'login' %}"> class="btn btn-default"> Login </a> </td>
+			<td> <a href="{% url 'register' %}"> class="button"> Sign up </a> </td>
+		</tr>
+		<tr>
+			<td> <a href="{% url 'quizzes' %}"> class="button"> Test your knowledge </a> </td>
+			<td> <a href="{% url 'forum' %}"> class="button"> Ask a question </a> </td>
+		</tr>
+	</center> </table>
+	</div>
+ {% endblock %}
+	

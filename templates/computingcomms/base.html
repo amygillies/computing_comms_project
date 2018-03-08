@@ -1,0 +1,36 @@
+<! DOCTYPE html>
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet_index" type="text/css" href="{% static "CSS/stylesheet_index.css" %}"/>
+</head>
+
+<html>
+	<head>
+		<title>
+			{% block title_block %}
+				Computing Comms
+			{% endblock %}
+		</title>
+	</head>
+	<body>
+		<div>
+			{% block sidebar_block %}
+				<ul>
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li><a href="{% url 'quizzes' %}">Quizzes</a></li>
+					<li><a href="{% url 'forum' %}">Forum</a></li>
+					<li><a href="{% url 'about_us' %}">About Us</a></li>
+					<li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+					<li><a href="{% url 'faq' %}">FAQ</a></li>
+                </ul>
+			{% endblock %}
+		</div>
+		
+		<div>
+			{% block body_block %}
+			{% endblock %}
+		</div>
+	</body>
+</html>
+			
