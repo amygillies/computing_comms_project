@@ -17,7 +17,7 @@ class Quiz(models.Model):
 class Question(models.Model):
     name = models.CharField(max_length=128)
     content = models.CharField(max_length=256)
-    quiz = models.ForeignKey(Quiz)
+    quiz = models.ForeignKey(Quiz, on_delete=models.DO_NOTHING)
 
     class Meta:
         unique_together = (('quiz','name'),)
@@ -29,7 +29,7 @@ class Answer(models.Model):
     answerID = models.CharField(max_length=4)
     content = models.CharField(max_length=256)
     correct = models.BooleanField(default = False)
-    question = models.ForeignKey(Question)
+    question = models.ForeignKey(Question, on_delete=models.DO_NOTHING)
 
     class Meta:
         unique_together = (('question','answerID'),)
@@ -39,7 +39,7 @@ class Answer(models.Model):
 
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
 
     # The additional attributes we wish to include.
     picture = models.ImageField(upload_to='profile_images', blank=True)
@@ -54,17 +54,17 @@ class ForumPost(models.Model):
     question = models.CharField(max_length=128)
     image = models.ImageField(upload_to='forum_images',blank=True)
     date = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.user
 
 class Comment(models.Model):
     comment = models.CharField(max_length=128)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to='comment_images', blank=True)
     date = models.DateTimeField(auto_now=True)
-    post = models.ForeignKey(ForumPost)
+    post = models.ForeignKey(ForumPost, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.user + " posted to " + self.post

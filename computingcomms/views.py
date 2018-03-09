@@ -2,8 +2,10 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.http import HttpResponse
 from computingcomms.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
+
 
 # Create your views here.
 def home(request):
@@ -43,7 +45,23 @@ def faq(request):
     return HttpResponse("Computing Comms - Frequently Asked Questions")
 
 def user_login(request):
-    return HttpResponse("Computing Comms - Login")
+    if request.method == 'POST':
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("Your Computing Comms account is disabled.")
+        else:
+            print("Invalid login details: {0}, {1}".format(username, password))
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render(request, 'computingcomms/login.html', {})
 
 def my_account(request):
     return HttpResponse("Computing Comms - My Account")
