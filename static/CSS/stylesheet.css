@@ -12,6 +12,18 @@ h2 {
 	font-family: Bernard MT Condensed;
 }
 
+p {
+	font-size: 16pt;
+	color: black;
+	font-family: Calibri;
+	margin-left: 250px;
+	margin-right: 30px;
+}
+
+#blue {
+	color: #00bfff;
+}
+
 .body {
 	font-family: Calibri;
 	color: black;

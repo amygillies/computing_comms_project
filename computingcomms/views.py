@@ -42,7 +42,7 @@ def contact(request):
      return render(request, 'computingcomms/contact_us.html', {})
 
 def faq(request):
-    return HttpResponse("Computing Comms - Frequently Asked Questions")
+    return render(request, 'computingcomms/faq.html', {})
 
 def user_login(request):
     if request.method == 'POST':
