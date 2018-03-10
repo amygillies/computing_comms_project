@@ -1,1 +1,26 @@
-**** FAQ ****
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+	FAQ
+{% endblock %}
+
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+                <center><h2>FAQ</h2></center>
+	</div>
+{% endblock %}
+
+{% block body_block %}
+    <p id="blue"><strong>Do I need to be registered to add questions and comments on forum?</strong></p>
+    <p>Yes. You can view the forum at anytime, but to be an active user of the forum you need to register and login.</p>
+    <p id="blue"><strong>Where can I view my quizz scores?</strong></p>
+    <p>You can view them in My Account tab after you login.</p>
+    <p id="blue"><strong>Question 3</strong></p>
+    <p>answer</p>
+{% endblock %}
