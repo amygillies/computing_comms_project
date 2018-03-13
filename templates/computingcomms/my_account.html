@@ -1,1 +1,35 @@
-**** My Account ****
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+	My Account
+{% endblock %}
+
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+                <center><h2>My Account</h2></center>
+	</div>
+{% endblock %}s
+
+{% block body_block %}
+	<div>
+		<p>profile image</p>
+	</div>
+
+	<div>
+		<p>Best scores</p>
+	</div>
+
+	<div class="buttons_position">
+		<ul>
+		<a href="{% url 'edit_account' %}"><button class="noframe_button">Edit Account</a></button><br><br>
+		<a href="{% url 'sign_out' %}"><button class="button">Sign Out</a></button>
+		</ul>
+	</div>
+	
+{% endblock %}

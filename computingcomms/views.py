@@ -3,8 +3,14 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from computingcomms.forms import UserForm, UserProfileForm
+<<<<<<< HEAD
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
+=======
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
+>>>>>>> a7b310b... fixing everything
 
 
 # Create your views here.
@@ -36,8 +42,17 @@ def af2(request):
     return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
 
 def forum(request):
-    return HttpResponse("Computing Comms - Forum")
+    return render(request, 'computingcomms/forum.html', {})
 
+<<<<<<< HEAD
+=======
+def add_question(request):
+    return HttpResponse("Add question on forum")
+
+def add_image(request):
+    return HttpResponse("Add image on forum")
+
+>>>>>>> a7b310b... fixing everything
 def contact(request):
      return render(request, 'computingcomms/contact_us.html', {})
 
@@ -64,7 +79,14 @@ def user_login(request):
         return render(request, 'computingcomms/login.html', {})
 
 def my_account(request):
-    return HttpResponse("Computing Comms - My Account")
+    return render(request, 'computingcomms/my_account.html', {})
+
+def sign_out(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('home'))
+
+def edit_account(request):
+    return HttpResponse("Edit your account")
 
 def register(request):
     registered = False

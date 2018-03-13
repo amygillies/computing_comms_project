@@ -14,7 +14,20 @@
 		<center><h1>Computing Comms</h1></center>
                 <center><h2>Forum</h2></center>
 	</div>
-{% endblock %}
+{% endblock %}s
 
 {% block body_block %}
+	<div>
+		<p>Previously asked questions <br>
+			Questions and comments will come here</p>
+	</div>
+
+	<div class="buttons_position">
+		<ul>
+		<a href="{% url 'my_account' %}">my account</a>
+		<a href="{% url 'add_question' %}"><button class="button">Add Question</a></button><br><br>
+		<a href="{% url 'add_image' %}"><button class="button">Add image</a></button>
+		</ul>
+	</div>
+	
 {% endblock %}

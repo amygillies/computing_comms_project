@@ -29,41 +29,10 @@ p {
 	color: black;
 	font-size: 20pt;
 }
-.fixed1{
-    position: fixed;
-    top: 100px;
-    left: 100xp
-    border: 1px solid black;
-    width: 100px;
-    height: 50px;
-    background: blue} 
 
-.fixed2{
-    position: fixed;
-    top: 100px;
-    right: 100xp
-    width: 100px;
-    height: 50px;
-    background: blue} 
-
-.fixed3{
-    position: fixed;
-    bottom: 100px;
-    left: 100xp
-    width: 100px;
-    height: 50px;
-    background: blue} 
-
-.fixed4{
-    position: fixed;
-    bottom: 100px;
-    right: 100xp
-    width: 100px;
-    height: 50px;
-    background: blue} 
 
 .button {
-    background-color: #00ccff;
+	background-color: #00ccff;
 	border: none;
 	color: white;
 	padding: 30px 62px;
@@ -75,6 +44,19 @@ p {
 	width: 300px;
 	
 }
+.noframe_button {
+	background-color: white;
+	border: none;
+	color: #00ccff;
+	padding: 30px 62px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	font-family: Calibri;
+	width: 300px;
+}
+	
 
 .table {
 	border-collapse: separate;
@@ -112,15 +94,39 @@ p {
 	font-family: Calibri;
 }
 
+.noframe_button a:link {
+	color: #00ccff;
+	font-size: 20px;
+	font-family: Calibri;
+}
+
 .button a:visited {
 	color: white;
 	font-size: 20px;
 	font-family: Calibri;
 }
 
+.noframe_button a:visited {
+	color: #00ccff;
+	font-size: 20px;
+	font-family: Calibri;
+}
 .button a:hover {
 	color: white;
 	font-size: 20px;
 	font-family: Calibri;
 	font-style: italic;
+}
+
+.noframe_button a:hover {
+	color: #00ccff;
+	font-size: 20px;
+	font-family: Calibri;
+	font-style: italic;
+}
+
+.buttons_position {
+	position: absolute;
+	top: 150px;
+	right: 80px
 }
