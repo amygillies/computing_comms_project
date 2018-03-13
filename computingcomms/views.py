@@ -2,17 +2,21 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from computingcomms.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
+
 
 # Create your views here.
 def home(request):
     return render(request, 'computingcomms/home.html', {})
 
 def about(request):
-    return HttpResponse("Computing Comms - About")
+    return render(request, 'computingcomms/about_us.html', {})
 
 def quizzes(request):
-    return HttpResponse("Computing Comms - Quizzes")
+    return render(request, 'computingcomms/quizzes.html', {})
 
 def jp2(request):
     return HttpResponse("Computing Comms - Java Programming 2 Quiz")
@@ -33,25 +37,78 @@ def af2(request):
     return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
 
 def forum(request):
-    return HttpResponse("Computing Comms - Forum")
+    return render(request, 'computingcomms/forum.html', {})
 
-def about(request):
-    return HttpResponse("Computing Comms - About Us")
+def add_question(request):
+    return HttpResponse("Add question on forum")
+
+def add_image(request):
+    return HttpResponse("Add image on forum")
 
 def contact(request):
-    return HttpResponse("Computing Comms - Contact Us")
+     return render(request, 'computingcomms/contact_us.html', {})
 
 def faq(request):
-    return HttpResponse("Computing Comms - Frequently Asked Questions")
+    return render(request, 'computingcomms/faq.html', {})
 
 def user_login(request):
-    return HttpResponse("Computing Comms - Login")
+    if request.method == 'POST':
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("Your Computing Comms account is disabled.")
+        else:
+            print("Invalid login details: {0}, {1}".format(username, password))
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render(request, 'computingcomms/login.html', {})
 
 def my_account(request):
-    return HttpResponse("Computing Comms - My Account")
+    return render(request, 'computingcomms/my_account.html', {})
+
+def sign_out(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('home'))
+
+def edit_account(request):
+    return HttpResponse("Edit your account")
 
 def register(request):
-    return HttpResponse("Computing Comms - Register")
+    registered = False
+
+    if request.method == 'POST':
+
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+
+            profile.save()
+            registered = True
+        else:
+            print(user_form.errors, profile_form.errors)
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+        
+    return render(request, 'computingcomms/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 def my_questions(request):
     return HttpResponse("Computing Comms - My Questions")
