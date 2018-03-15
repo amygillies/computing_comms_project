@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from computingcomms.forms import UserForm, UserProfileForm
+from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -41,13 +41,45 @@ def af2(request):
     return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
 
 def forum(request):
+    
     return render(request, 'computingcomms/forum.html', {})
 
 def add_question(request):
-    return HttpResponse("Add question on forum")
+    registered = False
 
+    forumQ_form = ForumQuestionForm(data=request.POST)
+
+    if forumQ_form.is_valid():
+
+        
+        question = forumQ_form.save(commit=False)
+        question.user = user
+        registered = True
+        
+    else:
+        forumQ_form = ForumQuestionForm()
+        
+    return render(request, 'computingcomms/add_question.html', {'forumQ_form': forumQ_form, 'registered': registered,})
+    
 def add_image(request):
-    return HttpResponse("Add image on forum")
+    registered = False
+
+    forum_form = ForumPostForm(data=request.POST)
+
+    if forum_form.is_valid():
+
+        
+        if 'picture' in request.FILES:
+            picture = request.FILES['picture']
+
+            picture.save()
+            registered = True
+        else:
+            print(forum_form.errors)
+    else:
+        forum_form = ForumPostForm()
+    return render(request, 'computingcomms/add_image.html', {'forum_form': forum_form, 'registered': registered,})
+    
 
 def contact(request):
      return render(request, 'computingcomms/contact_us.html', {})
