@@ -52,7 +52,7 @@ class UserProfile(models.Model):
 
 class ForumPost(models.Model):
     question = models.CharField(max_length=128)
-    image = models.ImageField(upload_to='forum_images',blank=True)
+    picture = models.ImageField(upload_to='forum_images',blank=True)
     date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 

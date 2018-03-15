@@ -7,7 +7,7 @@ from computingcomms.models import Quiz, Question, ForumPost, Comment, UserProfil
 # Register your models here.
 
 class ForumAdmin(admin.ModelAdmin):
-    list_display = ('question','image','date','user')
+    list_display = ('question','picture','date','user')
 
 class QuizAdmin(admin.ModelAdmin):
     list_display = ('name','quizID','subject')

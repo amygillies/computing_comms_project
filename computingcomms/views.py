@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.shortcuts import render
-from computingcomms.forms import UserForm, UserProfileForm
+from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+from computingcomms.models import ForumPost, Comment
 
 
 # Create your views here.
@@ -37,13 +40,45 @@ def af2(request):
     return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
 
 def forum(request):
-    return render(request, 'computingcomms/forum.html', {})
+    posts_list = ForumPost.objects.all()
+    context_dict = {'posts': posts_list}
+    return render(request, 'computingcomms/forum.html', context_dict)
 
 def add_question(request):
-    return HttpResponse("Add question on forum")
+    registered = False
 
+    forumQ_form = ForumQuestionForm(data=request.POST)
+
+    if forumQ_form.is_valid():
+
+        
+        question = forumQ_form.save(commit=False)
+        question.user = user
+        registered = True
+        
+    else:
+        forumQ_form = ForumQuestionForm()
+        
+    return render(request, 'computingcomms/add_question.html', {'forumQ_form': forumQ_form, 'registered': registered,})
+    
 def add_image(request):
-    return HttpResponse("Add image on forum")
+    registered = False
+
+    forum_form = ForumPostForm(data=request.POST)
+
+    if forum_form.is_valid():
+
+        
+        if 'picture' in request.FILES:
+            picture = request.FILES['picture']
+
+            picture.save()
+            registered = True
+        else:
+            print(forum_form.errors)
+    else:
+        forum_form = ForumPostForm()
+    return render(request, 'computingcomms/add_image.html', {'forum_form': forum_form, 'registered': registered,})
 
 def contact(request):
      return render(request, 'computingcomms/contact_us.html', {})
@@ -61,7 +96,8 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('home'))
+            
             else:
                 return HttpResponse("Your Computing Comms account is disabled.")
         else:
@@ -115,3 +151,8 @@ def my_questions(request):
 
 def my_comments(request):
     return HttpResponse("Computing Comms - My Comments")
+
+@login_required
+def restricted(request):
+    return HttpResponse("Since you're logged in, you can see this text!")
+
