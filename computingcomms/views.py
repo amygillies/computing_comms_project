@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm
+from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -41,8 +41,9 @@ def af2(request):
     return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
 
 def forum(request):
-    
-    return render(request, 'computingcomms/forum.html', {})
+    posts_list = ForumPost.objects.order_by('date')
+    context_dict = {'posts': posts_list}
+    return render(request, 'computingcomms/forum.html', context_dict)
 
 def add_question(request):
     registered = False

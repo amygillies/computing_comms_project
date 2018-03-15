@@ -25,8 +25,33 @@
 		{% endif %}
 	</div>
 	<div>
-		<p>Previously asked questions <br>
-			Questions and comments will come here</p>
+	<p>
+	    {% if posts %}
+		<ul>
+		    {% for post in posts %}
+			<q>{{ post.question }}<br>
+			{{ post.picture }}<br>
+			{{ post.date }}<br>
+			{{ post.user }}<q>
+		</ul>
+			    {% if comments %}
+				<ul>
+`				{% for comment in comments %}
+				    {{ comment.comment }} <br>
+				    {{ comment.user }} <br>
+				    {{ comment.date }} <br>
+				    {{ comment.image }}
+				{% endfor %}
+				</ul>
+			    {% else %}
+				<p><strong>There are no comments yet</strong<p>
+			    {% endif %}
+			    <a href="{% url 'add_comment' post.slug %}"> Add comment</a>
+		    {% endfor %}
+	    {% else %}
+		<strong>There are no posts present.</strong>
+	    {% endif %}
+	</p>
 	</div>
 
 	<div class="buttons_position">

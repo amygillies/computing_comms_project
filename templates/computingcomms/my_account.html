@@ -13,12 +13,13 @@
 	<div>
 		<center><h1>Computing Comms</h1></center>
                 <center><h2>My Account</h2></center>
+		<center><h3>Hi {{ user.username }}/h3></center>
 	</div>
 {% endblock %}s
 
 {% block body_block %}
 	<div>
-		<p>profile image</p>
+		<p><img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="300" height="300" alt="{{user.username}}" /></p>
 	</div>
 
 	<div>
