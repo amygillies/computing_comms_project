@@ -3,14 +3,13 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from computingcomms.forms import UserForm, UserProfileForm
-<<<<<<< HEAD
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
-=======
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
->>>>>>> a7b310b... fixing everything
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
@@ -44,15 +43,12 @@ def af2(request):
 def forum(request):
     return render(request, 'computingcomms/forum.html', {})
 
-<<<<<<< HEAD
-=======
 def add_question(request):
     return HttpResponse("Add question on forum")
 
 def add_image(request):
     return HttpResponse("Add image on forum")
 
->>>>>>> a7b310b... fixing everything
 def contact(request):
      return render(request, 'computingcomms/contact_us.html', {})
 
@@ -69,7 +65,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('home'))
             else:
                 return HttpResponse("Your Computing Comms account is disabled.")
         else:
@@ -123,3 +119,8 @@ def my_questions(request):
 
 def my_comments(request):
     return HttpResponse("Computing Comms - My Comments")
+
+@login_required
+def restricted(request):
+    return HttpResponse("Since you're logged in, you can see this text!")
+
