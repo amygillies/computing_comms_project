@@ -31,10 +31,23 @@
 	    {% if posts %}
 		<ul>
 		    {% for post in posts %}
-			{{ post.question }}<br>
+			<q>{{ post.question }}<br>
 			{{ post.picture }}<br>
 			{{ post.date }}<br>
-			{{ post.user }}			
+			{{ post.user }}<q>
+			    {% if comments %}
+				<ul>
+`				{% for comment in comments %}
+				    {{ comment.comment }} <br>
+				    {{ comment.user }} <br>
+				    {{ comment.date }} <br>
+				    {{ comment.image }}
+				{% endfor %}
+				</ul>
+			    {% else %}
+				<p><strong>There are no comments yet</strong<p>
+			    {% endif %}
+			    <a href="{% url 'add_comment' post.slug %}"> Add comment</a>
 		    {% endfor %}
 		</ul>
 	    {% else %}
