@@ -148,10 +148,10 @@ def register(request):
     return render(request, 'computingcomms/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 def my_questions(request):
-    return HttpResponse("Computing Comms - My Questions")
+    return render(request, 'computingcomms/my_questions.html', {})
 
 def my_comments(request):
-    return HttpResponse("Computing Comms - My Comments")
+    return render(request, 'computingcomms/my_comments.html', {})
 
 @login_required
 def restricted(request):

@@ -14,8 +14,8 @@ urlpatterns = [
     url(r'^af2/', views.af2, name='af2'),
     url(r'^login/', views.user_login, name='login'),
     url(r'^my_account/', views.my_account, name='my_account'),
-    url(r'^myquestions/', views.my_questions, name='myquestions'),
-    url(r'^mycomments/', views.my_comments, name='mycomments'),
+    url(r'^my_questions/', views.my_questions, name='my_questions'),
+    url(r'^my_comments/', views.my_comments, name='my_comments'),
     url(r'^faq.', views.faq, name='faq'),
     url(r'^forum', views.forum, name='forum'),
     url(r'^add_question', views.add_question, name='add_question'),
@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^register', views.register, name='register'),
     url(r'^sign_out', views.sign_out, name='sign_out'),
     url(r'^edit_account/', views.edit_account, name='edit_account'),
-    url(r'^restricted/', views.restricted, name='restricted'),
+    url(r'^restricted/', views.restricted, name='restricted'),
+
 ]

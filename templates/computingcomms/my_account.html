@@ -13,23 +13,39 @@
 	<div>
 		<center><h1>Computing Comms</h1></center>
                 <center><h2>My Account</h2></center>
-		<center><h3>Hi {{ user.username }}/h3></center>
+		<center><h3>Hi {{ user.username }}!</h3></center>
 	</div>
-{% endblock %}s
+{% endblock %}
 
 {% block body_block %}
-	<div>
-		<p><img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="300" height="300" alt="{{user.username}}" /></p>
+	
+	<div class ="scores">
+		<em>Best scores</em>
 	</div>
 
-	<div>
-		<p>Best scores</p>
+	
+	<div class="profile_pic" >
+	
+	    {% if userprofile.picture %}
+		<img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="200" height="200" alt="{{user.username}}" />
+	    {% else %}
+		<img src="{% static "images/if_no_picture.jpg" %}" width="200" height="200" alt="no_picture"/>
+	   {% endif %}
+	
 	</div>
+	
+	
+	<p><div>
+	    
+	</div>
+	<div id="edit_profile"></div></p>
 
 	<div class="buttons_position">
 		<ul>
 		<a href="{% url 'edit_account' %}"><button class="noframe_button">Edit Account</a></button><br><br>
-		<a href="{% url 'sign_out' %}"><button class="button">Sign Out</a></button>
+		<a href="{% url 'sign_out' %}"><button class="button">Sign Out</a></button><br><br>
+		<a href="{% url 'my_questions' %}"><button class="button">My Questions</a></button><br><br>
+		<a href="{% url 'my_comments' %}"><button class="button">My Comments</a></button>
 		</ul>
 	</div>
 	

@@ -70,7 +70,7 @@ p {
 	z-index: 1;
 	top: 0;
 	left: -17;
-	background-color: white;
+	background-color: #F0F8FF;
 	overflow-x: hidden;
 	padding-top: 15px;
 }
@@ -130,3 +130,25 @@ p {
 	top: 150px;
 	right: 80px
 }
+.scores{
+	position: relative;
+	top: 40px;
+	background-color: #F5FFFA;
+	border: none;
+	color: navy;
+	text-align: center;
+	text-decoration: none;
+	font-size: 20px;
+	font-family: Calibri;
+	width: 300px;
+	height: 300px;
+	margin-left: 200px;
+	margin-right: 30px;
+}
+
+.profile_pic {
+	position: relative;
+	left: 650px;
+	bottom: 300px;
+}
+	
