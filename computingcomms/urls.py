@@ -23,5 +23,7 @@ urlpatterns = [
     url(r'^register', views.register, name='register'),
     url(r'^sign_out', views.sign_out, name='sign_out'),
     url(r'^edit_account/', views.edit_account, name='edit_account'),
-    url(r'^restricted/', views.restricted, name='restricted'),
+    url(r'^restricted/', views.restricted, name='restricted'),
+
 ]
+
