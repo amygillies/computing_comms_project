@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm
+from computingcomms.models import ForumPost
+from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm, UpdateProfile
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -41,6 +42,8 @@ def af2(request):
     return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
 
 def forum(request):
+    posts_list = ForumPost.objects.order_by('date')
+    context_dict = {'posts': posts_list}
     return render(request, 'computingcomms/forum.html', {})
 
 def add_question(request):
@@ -61,7 +64,8 @@ def add_question(request):
             return render(request, 'computingcomms/forum.html', {'forumQ_form': forumQ_form, 'registered': registered,})
     
     return render(request, 'computingcomms/add_question.html', {'forumQ_form': forumQ_form, 'registered': registered,})
-    
+
+
 def add_image(request):
     registered = False
 
@@ -115,7 +119,18 @@ def sign_out(request):
     return HttpResponseRedirect(reverse('home'))
 
 def edit_account(request):
-    return HttpResponse("Edit your account")
+
+    if request.method == 'POST':
+        form = UpdateProfile(request.POST, instance=request.user)
+        form.actual_user = request.user
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('my_account'))
+    else:
+        form = UpdateProfile()
+
+    return render(request, 'computingcomms/edit_account.html',{'form' : form})
+    
 
 def register(request):
     registered = False
