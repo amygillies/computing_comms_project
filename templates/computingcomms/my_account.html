@@ -20,11 +20,14 @@
 {% block body_block %}
 	
 	<div class ="scores">
+	<center>
 		<em>Best scores</em>
+	</center>
 	</div>
 
 	
 	<div class="profile_pic" >
+	<center>
 	
 	    {% if userprofile.picture %}
 		<img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="200" height="200" alt="{{user.username}}" />
@@ -32,6 +35,7 @@
 		<img src="{% static "images/if_no_picture.jpg" %}" width="200" height="200" alt="no_picture"/>
 	   {% endif %}
 	
+	</center>
 	</div>
 	
 	
@@ -41,12 +45,14 @@
 	<div id="edit_profile"></div></p>
 
 	<div class="buttons_position">
+	<center>
 		<ul>
 		<a href="{% url 'edit_account' %}"><button class="noframe_button">Edit Account</a></button><br><br>
 		<a href="{% url 'sign_out' %}"><button class="button">Sign Out</a></button><br><br>
 		<a href="{% url 'my_questions' %}"><button class="button">My Questions</a></button><br><br>
 		<a href="{% url 'my_comments' %}"><button class="button">My Comments</a></button>
 		</ul>
+	</center>
 	</div>
 	
 {% endblock %}

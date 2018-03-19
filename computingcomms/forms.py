@@ -18,9 +18,31 @@ class UserProfileForm(forms.ModelForm):
 class ForumPostForm(forms.ModelForm):
     class Meta:
         model = ForumPost
-        fields = ('picture',)
+        fields = ('picture', 'question')
 
 class ForumQuestionForm(forms.ModelForm):
     class Meta:
         model = ForumPost
         fields = ('question',)
+
+class UpdateProfile(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name', 'last_name')
+
+    def clean_email(self):
+        username = self.cleaned_data.get('username')
+        email = self.cleaned_data.get('email')
+
+        if email and User.objects.filter(email=email).exclude(username=username).count():
+            raise forms.ValidationError('This email address is already in use. Please supply a different email address.')
+        return email
+
+        def save(self, commit=True):
+            user = super(RegistrationForm, self).save(commit=False)
+            user.email = self.cleaned_data['email']
+
+            if commit:
+                user.save()
+
+            return user

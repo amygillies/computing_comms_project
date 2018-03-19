@@ -31,7 +31,8 @@
 	    {% if posts %}
 		<ul>
 		    {% for post in posts %}
-
+			
+			<a href="{% url 'forum' post.slug %}">
 			<q>{{ post.question }}<br>
 			{{ post.picture }}<br>
 			{{ post.date }}<br>
