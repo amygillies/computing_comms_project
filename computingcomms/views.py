@@ -69,20 +69,21 @@ def add_question(request):
 def add_image(request):
     registered = False
 
-    forum_form = ForumPostForm(data=request.POST)
+    forum_form = ForumPostForm()
 
-    if forum_form.is_valid():
-
+    if request.method == 'POST':
         
-        if 'picture' in request.FILES:
-            picture = request.FILES['picture']
+        forum_form = ForumPostForm(request.POST)
 
+        if forum_form.is_valid():
+            user = request.user
+            picture = forum_form.save(commit=False)
+            picture.user = user
             picture.save()
-            registered = True
+            return render(request, 'computingcomms/forum.html', {'forum_form': forum_form, 'registered': registered,})
         else:
             print(forum_form.errors)
-    else:
-        forum_form = ForumPostForm()
+   
     return render(request, 'computingcomms/add_image.html', {'forum_form': forum_form, 'registered': registered,})
     
 
