@@ -41,25 +41,25 @@ def af2(request):
     return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
 
 def forum(request):
-    posts_list = ForumPost.objects.order_by('date')
-    context_dict = {'posts': posts_list}
-    return render(request, 'computingcomms/forum.html', context_dict)
+    return render(request, 'computingcomms/forum.html', {})
 
 def add_question(request):
     registered = False
 
-    forumQ_form = ForumQuestionForm(data=request.POST)
+    forumQ_form = ForumQuestionForm()
 
-    if forumQ_form.is_valid():
+    if request.method == 'POST':
+        forumQ_form = ForumQuestionForm(data=request.POST)
+        
+        if forumQ_form.is_valid():
 
-        
-        question = forumQ_form.save(commit=False)
-        question.user = user
-        registered = True
-        
-    else:
-        forumQ_form = ForumQuestionForm()
-        
+            user = request.user
+            question = forumQ_form.save(commit=False)
+            question.user = user
+            question.save()
+            # redirect if the thing succeeded.
+            return render(request, 'computingcomms/forum.html', {'forumQ_form': forumQ_form, 'registered': registered,})
+    
     return render(request, 'computingcomms/add_question.html', {'forumQ_form': forumQ_form, 'registered': registered,})
     
 def add_image(request):

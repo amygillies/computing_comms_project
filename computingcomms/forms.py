@@ -18,9 +18,10 @@ class UserProfileForm(forms.ModelForm):
 class ForumPostForm(forms.ModelForm):
     class Meta:
         model = ForumPost
-        fields = ('picture',)
+        fields = ('picture', 'question')
 
 class ForumQuestionForm(forms.ModelForm):
     class Meta:
         model = ForumPost
         fields = ('question',)
+
