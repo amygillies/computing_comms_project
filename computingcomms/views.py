@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.shortcuts import render
 from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm
 from django.contrib.auth import authenticate, login
@@ -9,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-
+from computingcomms.models import ForumPost, Comment
 
 
 # Create your views here.
@@ -80,7 +79,6 @@ def add_image(request):
     else:
         forum_form = ForumPostForm()
     return render(request, 'computingcomms/add_image.html', {'forum_form': forum_form, 'registered': registered,})
-    
 
 def contact(request):
      return render(request, 'computingcomms/contact_us.html', {})
@@ -99,6 +97,7 @@ def user_login(request):
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse('home'))
+            
             else:
                 return HttpResponse("Your Computing Comms account is disabled.")
         else:
