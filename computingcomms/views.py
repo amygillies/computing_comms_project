@@ -44,7 +44,7 @@ def af2(request):
 def forum(request):
     posts_list = ForumPost.objects.order_by('date')
     context_dict = {'posts': posts_list}
-    return render(request, 'computingcomms/forum.html', {})
+    return render(request, 'computingcomms/forum.html', context_dict)
 
 def add_question(request):
     registered = False
