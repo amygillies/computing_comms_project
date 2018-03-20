@@ -28,6 +28,14 @@
 					<a href="{% url 'about_us' %}">About Us</a>
 					<a href="{% url 'contact_us' %}">Contact Us</a>
 					<a href="{% url 'faq' %}">FAQ</a>
+					{% if user.is_authenticated %}
+						<a href="{% url 'my_account' %}">My Account</a>
+						<a href="{% url 'sign_out' %}">Logout</a>
+					{% else %}
+						<a href="{% url 'login' %}">Sign In</a>
+						<a href="{% url 'register' %}">Sign Up</a>
+					{% endif %}
+						
                 </ul>
 			{% endblock %}
 		</div>

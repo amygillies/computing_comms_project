@@ -1,1 +1,65 @@
-**** Forum ****
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+	Forum
+{% endblock %}
+
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+                <center><h2>Forum</h2></center>
+	</div>
+{% endblock %}
+
+{% block body_block %}
+	<div>
+		{% if user.is_authenticated %} 
+			<h3><p>Welcome {{ user.username }}</p></h3>
+		{% else %}
+			<h3><p>Welcome</p></h3>
+		{% endif %}
+	</div>
+
+	<div>
+	    {% if posts %}
+		<ul>
+		{% for post in posts %}
+			<p>{{ post.question }}</p>
+			<p id="date">{{ post.date }}</p>
+			<p id="user">{{ post.user }}</p>
+			<p>{{ post.picture }}</p>
+			{% if comments %}
+				<ul>
+`				{% for comment in comments %}
+				   <p id="comment">{{ comment.comment }}<br>
+				   {{ comment.user }} <br>
+				   {{ comment.date }} <br>
+				   {{ comment.image }}<br>
+				    <a href="{% url 'add_comment' %}">Add Comment</a></p>
+				{% endfor %}
+				</ul>
+			    {% else %}
+				<p id="comment">There are no comments yet
+				<a href="{% url 'add_comment' %}">Add Comment</a></p>
+			    {% endif %}
+		{% endfor %}
+		</ul>    
+	    {% else %}
+		<strong>There are no posts present.</strong>
+	    {% endif %}
+	</div>
+
+	<div class="buttons_position">
+		<ul>
+		<a href="{% url 'my_account' %}"><button class="button">My Account</a></button><br><br>
+		<a href="{% url 'add_image' %}"><button class="button">Add Image</a></button><br><br>
+		<a href="{% url 'add_question' %}"><button class="button">Add Question</a></button>
+		</ul>
+	</div>
+	
+{% endblock %}

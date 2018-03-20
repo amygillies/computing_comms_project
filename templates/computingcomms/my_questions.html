@@ -1,1 +1,41 @@
-**** My Questions ****
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+	My Questions
+{% endblock %}
+
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+                <center><h2>My Questions</h2></center>
+	</div>
+{% endblock %}
+
+{% block body_block %}
+
+	<div>
+	{% if posts %}
+	<ul>
+	    {% for post in posts %}
+		{% if user == post.user %}
+		    <p> {{post.question }} </p>
+		{% endif %}
+	    {% endfor %}
+	</ul>
+	{% else %}
+	    <p><strong> You didn't ask any questions, yet! </strong></p>
+	{% endif %}
+	</div>
+
+	<div class="buttons_position">
+		<ul>
+		<a href="{% url 'my_account' %}"><button class="button">My Account</a></button><br><br>
+		<a href="{% url 'my_comments' %}"><button class="button">My Comments</a></button>
+		</ul>
+	</div>
+{% endblock %}

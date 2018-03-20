@@ -1,0 +1,36 @@
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet_index" type="text/css" href="/static/CSS/stylesheet_index.css"/>
+</head>
+
+{% block title_block %}
+	Computing Comms - Add an Image to the Forum
+{% endblock %}
+
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+	</div>
+	<div>
+		<center><h2>Add an Image</h2></center>
+	</div>
+{% endblock %}
+
+
+
+{% block body_block %}
+<center>
+
+	<form id = "forumQ_form" method = "post" action = "{% url 'add_image' %} enctype = "multipart/form-data">
+	
+	{% csrf_token %}
+	
+	{{ forum_form.as_p }}
+
+	<input type = "submit" name= "submit" value = "Add Image" />
+	</form>
+
+</center>
+{% endblock %}
