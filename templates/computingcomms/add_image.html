@@ -23,7 +23,7 @@
 {% block body_block %}
 <center>
 
-	<form id = "forum_form" method = "post" action = "/computingcomms/add_image/" enctype="multipart/form-data">
+	<form id = "forum_form" method = "post" action = "{% url 'add_image' %}" enctype="multipart/form-data">
 	
 	{% csrf_token %}
 	
