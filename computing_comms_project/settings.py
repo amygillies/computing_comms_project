@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 """
 Django settings for computing_comms_project project.
 
@@ -145,7 +145,6 @@ LOGIN_URL = '/computingcomms/login/'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-=======
 """
 Django settings for computing_comms_project project.
 
@@ -288,4 +287,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/computingcomms/login/'
->>>>>>> 6e4bffe079120d3ef730b88f10bf314f1c5a9f23
+
