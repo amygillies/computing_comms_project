@@ -21,6 +21,8 @@ MEDIA_DIR = os.path.join(BASE_DIR, '/profile_images/media')
 
 MEDIA_ROOT = MEDIA_DIR
 
+MEDIA_URL = '/media/'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
