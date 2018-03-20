@@ -45,7 +45,10 @@
 				</ul>
 			    {% else %}
 				<p id="comment">There are no comments yet
+				{% if user.is_authenticated %} 
 				<a href="{% url 'add_comment' %}">Add Comment</a></p>
+				{% else%}
+				{% endif %}
 			    {% endif %}
 		{% endfor %}
 		</ul>    
@@ -55,11 +58,20 @@
 	</div>
 
 	<div class="buttons_position">
+	{% if user.is_authenticated %} 
 		<ul>
 		<a href="{% url 'my_account' %}"><button class="button">My Account</a></button><br><br>
 		<a href="{% url 'add_image' %}"><button class="button">Add Image</a></button><br><br>
 		<a href="{% url 'add_question' %}"><button class="button">Add Question</a></button>
 		</ul>
-	</div>
 	
+	{% else %}
+		<ul>
+		<a href="{% url 'home' %}"><button class="button">Home</a></button><br><br>
+		<a href="{% url 'login' %}"><button class="button">Sign In</a></button><br><br>
+		<a href="{% url 'register' %}"><button class="button">Sign Up</a></button>
+		</ul>
+
+	{% endif %}
+	</div>
 {% endblock %}
