@@ -30,7 +30,7 @@ def oose2(request):
     return HttpResponse("Computing Comms - Object Orientated Software Engineering Quiz")
 
 def wad2(request):
-    return HttpResponse("Computing Comms - Web App Development 2 Quiz")
+    return render(request, 'computingcomms/wad2.html', {})
 
 def ads2(request):
     return HttpResponse("Computing Comms - Algorithms and Data Structures 2 Quiz")
