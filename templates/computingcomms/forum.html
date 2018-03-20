@@ -14,6 +14,7 @@
 		<center><h1>Computing Comms</h1></center>
                 <center><h2>Forum</h2></center>
 	</div>
+
 {% endblock %}
 
 {% block body_block %}
@@ -47,8 +48,10 @@
 				<p id="comment">There are no comments yet
 				<a href="{% url 'add_comment' %}">Add Comment</a></p>
 			    {% endif %}
+
 		{% endfor %}
 		</ul>    
+
 	    {% else %}
 		<strong>There are no posts present.</strong>
 	    {% endif %}
