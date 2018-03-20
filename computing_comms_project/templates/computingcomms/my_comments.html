@@ -1,0 +1,42 @@
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+	My Comments
+{% endblock %}
+
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+                <center><h2>My Comments</h2></center>
+	</div>
+{% endblock %}
+
+{% block body_block %}
+
+	<div>
+	{% if comments %}
+	<ul>
+	    {% for comment in comments %}
+		{% if user == comments.user %}
+		    <p> {{comment.post}}<br>
+			{{comment.comment}} </p>
+		{% endif %}
+	    {% endfor %}
+	</ul>
+	{% else %}
+	    <p><strong> You didn't added any comments yet! </strong></p>
+	{% endif %}
+	</div>
+
+	<div class="buttons_position">
+		<ul>
+		<a href="{% url 'my_account' %}"><button class="button">My Account</a></button><br><br>
+		<a href="{% url 'my_questions' %}"><button class="button">My Questions</a></button>
+		</ul>
+	</div>
+{% endblock %}

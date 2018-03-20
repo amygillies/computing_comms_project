@@ -1,0 +1,30 @@
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+	FAQ
+{% endblock %}
+
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+                <center><h2>FAQ</h2></center>
+	</div>
+{% endblock %}
+
+{% block body_block %}
+    <p id="blue"><strong>Do I need to be registered to add questions and comments on forum?</strong></p>
+    <p>Yes. You can view the forum at anytime, but to be an active user of the forum you need to register and login.</p>
+    <p id="blue"><strong>Where can I view my quiz scores?</strong></p>
+    <p>You can view them in My Account tab after you login.</p>
+    <p id="blue"><strong>How many times can you take part in a quiz each day?</strong></p>
+    <p>As many times as you wish</p>
+    <p id="blue"><strong>Can I also add images of my code?</strong></p>
+    <p>Yes, images can be added to both the forum as a question or as a comment.</p>
+    <p id="blue"><strong>Where can we speak to lecturers from here?</strong></p>
+    <p>If you have a problem lecturers will be able to access the questions posted and can contact you from there.</p>
+{% endblock %}

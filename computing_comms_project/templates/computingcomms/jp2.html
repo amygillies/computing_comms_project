@@ -1,0 +1,97 @@
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+		Computing Comms - Quizzes
+{% endblock %}
+	
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+	</div>
+	<div>
+		<center><h2>Java Programming 2 Quiz</h2></center>
+	</div>
+{% endblock %}
+
+
+{% block body_block %}
+
+	<script type="text/javascript" src = "/static/js/jp2quiz.js"></script>
+	<form id = "jp2quiz" name = "jp2quiz">
+	
+	<p class="questions" id="questions">1. What is the output for the following code?</p>
+	<p id="questions"> for (int i=0; i<5; i++) { <br/> &emsp; System.out.print((i%2==0)?”a”:”b”); <br/> } </p>
+	<input type="radio" id="answers" name="question1" value="a"> abab <br/>
+	<input type="radio" id="answers" name="question1" value="b"> null <br/>
+	<input type="radio" id="answers" name="question1" value="c"> ababa <br/>
+	<input type="radio" id="answers" name="question1" value="d"> a <br/>
+
+	<p class="questions" id="questions">2. What value is stored in variable i? <br/> int i  = 1/0; </p>
+	<input type="radio" id="answers" name="question2" value="a"> 0 <br/>
+	<input type="radio" id="answers" name="question2" value="b"> null <br/>
+	<input type="radio" id="answers" name="question2" value="c"> raises ArithmeticException <br/>
+	<input type="radio" id="answers" name="question2" value="d"> raises IOException <br/>
+	
+	<p class="questions" id="questions">3. What is the output for the following code? </p>
+	<p id="questions"> while (true) { <br/> &emsp; System.out.print(“a”); <br/> &emsp; break; <br/>} </p>
+	<input type="radio" id="answers" name="question3" value="a"> a <br/>
+	<input type="radio" id="answers" name="question3" value="b"> aaaaaaaaaaa (for infinity) <br/>
+	<input type="radio" id="answers" name="question3" value="c"> null <br/>
+	<input type="radio" id="answers" name="question3" value="d"> true <br/>
+	
+	<p class="questions" id="questions">4. What value is stored in variable b? <br/> byte b = (byte)128; </p>
+	<input type="radio" id="answers" name="question4" value="a"> 128 <br/>
+	<input type="radio" id="answers" name="question4" value="b"> 1 <br/>
+	<input type="radio" id="answers" name="question4" value="c"> -128 <br/>
+	<input type="radio" id="answers" name="question4" value="d"> 0 <br/>
+
+	<p class="questions" id="questions">5. What is meant by polymorphism in Java? </p>
+	<input type="radio" id="answers" name="question5" value="a"> Whenever an instance of class A is expected, you can also use an instance of any subclass of A <br/>
+	<input type="radio" id="answers" name="question5" value="b"> Many forms <br/>
+	<input type="radio" id="answers" name="question5" value="c"> If B is a subclass of A, then B is a specialised version of A<br/>
+	<input type="radio" id="answers" name="question5" value="d"> If a subclass has an instance method with an identical signature as a parent class then the subclass method overrides the parent method <br/>
+	
+	<p class="questions" id="questions">6. What is the output for the following code?</p>
+	<p id="questions"> for (int i=0; i<5; i++) { <br/> &emsp; System.out.print(i++); <br/> } </p>
+	<input type="radio" id="answers" name="question6" value="a"> 24 <br/>
+	<input type="radio" id="answers" name="question6" value="b"> 024  <br/>
+	<input type="radio" id="answers" name="question6" value="c"> 135 <br/>
+	<input type="radio" id="answers" name="question6" value="d"> 13 <br/>
+	
+	<p class="questions" id="questions">7. What does immutability mean in Java? What are the advantages?</p>
+	<input type="radio" id="answers" name="question7" value="a"> Waits for queue to become non-empty when retrieving an element; provides a correct, thread-safe implementation  <br/>
+	<input type="radio" id="answers" name="question7" value="b"> Generalised version of synchronized code; allows code to back out of an attempt to acquire a lock <br/>
+	<input type="radio" id="answers" name="question7" value="c"> Internal state cannot change after it is constructed; saves memory and can be safely shared between data structures of threads <br/>
+	<input type="radio" id="answers" name="question7" value="d"> Internal state can be changed after it is constructed; tasks can be divided into subtasks <br/>
+
+	<p class="questions" id="questions">8. What does liveness mean in Java? What is the most common problem with liveness?</p>
+	<input type="radio" id="answers" name="question8" value="a"> Begins by polling a condition that must be true before the block can proceed; starvation – a thread cannot gain access to a shared resource and is unable to make progress <br/>
+	<input type="radio" id="answers" name="question8" value="b"> The ability to implement more than one interface; deadlock – two or more threads are blocked forever, waiting for each other<br/>
+	<input type="radio" id="answers" name="question8" value="c"> At the moment of its happening or being performed; livelock – threads are too busy responding to each other to make progress <br/>
+	<input type="radio" id="answers" name="question8" value="d"> Concurrent programs ability to execute in a timely fashion; deadlock – two or more threads are blocked forever, waiting for each other<br/>
+	
+	<p class="questions" id="questions">9. What is the correct Classic Model-View-Controller diagram?</p>
+	<input type="radio" id="answers" name="question9" value="a"> <img src = "{% static "images/answer1.jpg" %}" alt = "a"/> <br/>
+	<input type="radio" id="answers" name="question9" value="b"> <img src = "{% static "images/answer2.jpg" %}" alt = "b"/> <br/>
+	<input type="radio" id="answers" name="question9" value="c"> <img src = "{% static "images/answer3.jpg" %}" alt = "c"/> <br/>
+	<input type="radio" id="answers" name="question9" value="d"> <img src = "{% static "images/answer4.jpg" %}" alt = "d"/> <br/>
+	
+	<p class="questions" id="questions">10.	What value is stored in variable d? <br/> double d = 1.0/0; </p>
+	<input type="radio" id="answers" name="question10" value="a"> Infinity <br/>
+	<input type="radio" id="answers" name="question10" value="b"> Double.POSITIVE_INFINITY <br/>
+	<input type="radio" id="answers" name="question10" value="c"> Double.INFINITY <br/>
+	<input type="radio" id="answers" name="question10" value="d"> null <br/>
+	
+	<center><input id="button" type="button" value= "Submit" onclick = "check();"></center>
+	</form>
+	
+	<div id="after_submit">
+	<p id="number_correct"></p>
+	</div>
+	
+{% endblock %}

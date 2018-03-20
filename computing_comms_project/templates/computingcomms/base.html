@@ -1,0 +1,49 @@
+<! DOCTYPE html>
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static "CSS/stylesheet.css" %}"/>
+</head>
+
+<html>
+	<head>
+		<title>
+			{% block title_block %}
+				Computing Comms
+			{% endblock %}
+		</title>
+		
+		{% block head_block %}
+		{% endblock %}
+		
+	</head>
+	
+	<body>
+		<div class ="sidenav">
+			{% block sidebar_block %}
+				<ul>
+					<a href="{% url 'home' %}">Home</a>
+					<a href="{% url 'quizzes' %}">Quizzes</a>
+					<a href="{% url 'forum' %}">Forum</a>
+					<a href="{% url 'about_us' %}">About Us</a>
+					<a href="{% url 'contact_us' %}">Contact Us</a>
+					<a href="{% url 'faq' %}">FAQ</a>
+					{% if user.is_authenticated %}
+						<a href="{% url 'my_account' %}">My Account</a>
+						<a href="{% url 'sign_out' %}">Logout</a>
+					{% else %}
+						<a href="{% url 'login' %}">Sign In</a>
+						<a href="{% url 'register' %}">Sign Up</a>
+					{% endif %}
+						
+                </ul>
+			{% endblock %}
+		</div>
+		
+		<div>
+			{% block body_block %}
+			{% endblock %}
+		</div>
+	</body>
+</html>
+			
