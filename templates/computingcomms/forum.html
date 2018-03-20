@@ -30,14 +30,14 @@
 	    {% if posts %}
 		<ul>
 		{% for post in posts %}
-			<p>{{ post.question }}</p>
+			<p><a href="/computingcomms/post/{{ post.slug }}">{{ post.question }}</p></a>
 			<p id="date">{{ post.date }}</p>
 			<p id="user">{{ post.user }}</p>
                         {% if post.picture %}
 			    <p><img src="{{ MEDIA_URL }}{{ post.picture }}}" alt="no image"></p>
                         {% else %}
                             <div>
-                            <strong>No picture uploaded!</strong>
+                            <p><strong>No picture uploaded!</strong><p>
                             </div>
                         {% endif %}
 			{% if comments %}
@@ -47,19 +47,17 @@
 				   {{ comment.user }} <br>
 				   {{ comment.date }} <br>
 				   {{ comment.image }}<br>
-				   {% if user.is_authenticated %} 
+				  {% if user.is_authenticated %} 
 				   <a href="{% url 'add_comment' %}">Add Comment</a></p>
-				   {% else%}
-				   {% endif %}
-				   {% endfor %}
+				  {% endif %}
+				{% endfor %}
 				</ul>
-			    {% else %}
+			{% else %}
 				<p id="comment">There are no comments yet
 				{% if user.is_authenticated %} 
 				<a href="{% url 'add_comment' %}">Add Comment</a></p>
-				{% else%}
 				{% endif %}
-			    {% endif %}
+			{% endif %}
 
 		{% endfor %}
 		</ul>    

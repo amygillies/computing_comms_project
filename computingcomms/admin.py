@@ -12,6 +12,8 @@ class ForumAdmin(admin.ModelAdmin):
 class QuizAdmin(admin.ModelAdmin):
     list_display = ('name','quizID','subject')
 
+
+    
 admin.site.register(ForumPost, ForumAdmin)
 admin.site.register(Quiz, QuizAdmin)
 admin.site.register(Question)

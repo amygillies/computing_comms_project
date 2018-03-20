@@ -42,9 +42,24 @@ def af2(request):
 
 def forum(request):
     posts_list = ForumPost.objects.order_by('-date')
-    comments_list = Comment.objects.order_by('-date')
+    comments_list = Comment.objects.order_by('-date')[:3]
     context_dict = {'posts': posts_list, 'comments': comments_list}
     return render(request, 'computingcomms/forum.html', context_dict)
+
+def show_question(request, post_name_slug):
+    context_dict = {}
+
+    try:
+        post = ForumPost.objects.get(slug=post_name_slug)
+        comments = Comment.objects.filter(post=post)
+        context_dict['comments'] = comments
+        context_dict['post'] = post
+
+    except ForumPost.DoesNotExist:
+        context_dict['comments'] = None
+        context_dict['post'] = None
+
+    return render(request, 'computingcomms/post.html', context_dict)
 
 def add_question(request):
     registered = False

@@ -1,0 +1,73 @@
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet_index" type="text/css" href="/static/CSS/stylesheet_index.css"/>
+</head>
+
+{% block title_block %}
+	{{ post.question }}
+{% endblock %}
+
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+	</div>
+	<div>
+		<center><h3>{{ post.question }}</h3></center>
+	</div>
+{% endblock %}
+
+
+{% block body_block %}
+	{% if comments %}
+            <ul>
+            {% for comment in comments %}
+                <p id="comment">{{ comment.comment }}<br>
+				{{ comment.user }} <br>
+				{{ comment.date }} <br>
+				{{ comment.image }}<br>
+				{% if user.is_authenticated %} 
+				    <a href="{% url 'add_comment' %}">Add Comment</a></p>
+				{% endif %}
+            {% endfor %}
+            </ul>
+
+        {% else %}
+            <strong>There are no comments yet!</strong>
+               
+        {% if user.is_authenticated %}
+           <p><a href="{% url 'add_comment' %}">Add Comment</a></p>
+        {% endif %}
+	{% endif %}
+
+	<div class="buttons_position">
+		<ul>
+		<a href="{% url 'forum' %}"><button class="button">Back to forum</a></button><br><br>
+		</ul>
+	{% if user.is_authenticated %} 
+		<ul>
+		<a href="{% url 'my_account' %}"><button class="button">My Account</a></button><br><br>
+		</ul>
+	
+	{% else %}
+		<ul>
+		<a href="{% url 'home' %}"><button class="button">Home</a></button><br><br>
+		<a href="{% url 'login' %}"><button class="button">Sign In</a></button><br><br>
+		<a href="{% url 'register' %}"><button class="button">Sign Up</a></button>
+		</ul>
+
+	{% endif %}
+	</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
