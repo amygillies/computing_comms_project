@@ -28,11 +28,9 @@
 	
 	<div class="profile_pic" >
 	
-	    {% if userprofile.picture %}
-		<img src="{{userprofile.picture.url }}" width="200" height="200" alt="{{user.username}}" />
-	    {% else %}
-		<img src="{% static "images/if_no_picture.jpg" %}" width="200" height="200" alt="no_picture"/>
-	   {% endif %}
+	   
+	<img src="{{ MEDIA_URL }}" width="200" height="200" alt="{{user.username}}" />
+	
 	
 	</div>
 	

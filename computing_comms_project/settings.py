@@ -16,6 +16,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
+MEDIA_DIR = os.path.join(BASE_DIR, '/profile_images/media')
+
+MEDIA_ROOT = MEDIA_DIR
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -31,6 +34,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [STATIC_DIR, ]
 
 
@@ -67,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -93,7 +100,8 @@ PASSWORD_HASHERS = (
     
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-)
+)
+
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -133,3 +141,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/computingcomms/login/'
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+

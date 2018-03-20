@@ -78,9 +78,10 @@ def add_image(request):
 
         if forum_form.is_valid():
             user = request.user
-            picture = forum_form.save(commit=False)
-            picture.user = user
-            picture.save()
+            post = forum_form.save(commit=False)
+            post.user = user
+            post.picture = request.FILES['picture']
+            post.save()
             return render(request, 'computingcomms/forum.html', {'forum_form': forum_form, 'registered': registered,})
         else:
             print(forum_form.errors)
@@ -106,8 +107,7 @@ def add_comment(request):
     
     return render(request, 'computingcomms/add_comment.html', {'comment_form': comment_form, 'registered': registered,})
 
-
-    return render(request, 'computingcomms/add_comment.html', {})
+   
 
 def contact(request):
      return render(request, 'computingcomms/contact_us.html', {})

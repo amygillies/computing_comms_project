@@ -32,7 +32,13 @@
 			<p>{{ post.question }}</p>
 			<p id="date">{{ post.date }}</p>
 			<p id="user">{{ post.user }}</p>
-			<p>{{ post.picture }}</p>
+                        {% if picture %}
+			    <p><img src="{% media {{ post.picture }}}" alt="no image"></p>
+                        {% else %}
+                            <div>
+                            <strong>No picture uploaded!</strong>
+                            </div>
+                        {% endif %}
 			{% if comments %}
 				<ul>
 `				{% for comment in comments %}
