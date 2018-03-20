@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from computingcomms.models import ForumPost
+from computingcomms.models import ForumPost, UserProfile, Comment
 from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm, UpdateProfile
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
@@ -42,8 +42,9 @@ def af2(request):
     return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
 
 def forum(request):
-    posts_list = ForumPost.objects.order_by('date')
-    context_dict = {'posts': posts_list}
+    posts_list = ForumPost.objects.order_by('-date')
+    comments_list = Comment.objects.order_by('-date')
+    context_dict = {'posts': posts_list, 'comments': comments_list}
     return render(request, 'computingcomms/forum.html', context_dict)
 
 def add_question(request):
@@ -85,7 +86,9 @@ def add_image(request):
             print(forum_form.errors)
    
     return render(request, 'computingcomms/add_image.html', {'forum_form': forum_form, 'registered': registered,})
-    
+
+def add_comment(request):
+    return render(request, 'computingcomms/add_comment.html', {})
 
 def contact(request):
      return render(request, 'computingcomms/contact_us.html', {})
@@ -164,10 +167,15 @@ def register(request):
     return render(request, 'computingcomms/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 def my_questions(request):
-    return render(request, 'computingcomms/my_questions.html', {})
+    posts_list = ForumPost.objects.order_by('-date')
+    context_dict = {'posts': posts_list,}
+    return render(request, 'computingcomms/my_questions.html', context_dict)
 
 def my_comments(request):
-    return render(request, 'computingcomms/my_comments.html', {})
+    posts_list = ForumPost.objects.order_by('-date')
+    comments_list = Comment.objects.order_by('-date')
+    context_dict = {'posts': posts_list,}
+    return render(request, 'computingcomms/my_comments.html', context_dict)
 
 @login_required
 def restricted(request):

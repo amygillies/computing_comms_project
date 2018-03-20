@@ -27,7 +27,6 @@
 
 	
 	<div class="profile_pic" >
-	<center>
 	
 	    {% if userprofile.picture %}
 		<img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="200" height="200" alt="{{user.username}}" />
@@ -35,15 +34,8 @@
 		<img src="{% static "images/if_no_picture.jpg" %}" width="200" height="200" alt="no_picture"/>
 	   {% endif %}
 	
-	</center>
 	</div>
 	
-	
-	<p><div>
-	    
-	</div>
-	<div id="edit_profile"></div></p>
-
 	<div class="buttons_position">
 	<center>
 		<ul>

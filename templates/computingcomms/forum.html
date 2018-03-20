@@ -24,37 +24,34 @@
 			<h3><p>Welcome</p></h3>
 		{% endif %}
 	</div>
+
 	<div>
-	<p>
 	    {% if posts %}
 		<ul>
 		{% for post in posts %}
-		   
-			<p>{{ post.question }}<br>
-			{{ post.date }}<br>
-			{{ post.user }}<p>
-			{% for pic in pic.pictures.all %}
-				{{ post.pic }}		
-		        	{% endfor %}
-		{% endfor %}
-		</ul>
-			    {% if comments %}
+			<p>{{ post.question }}</p>
+			<p id="date">{{ post.date }}</p>
+			<p id="user">{{ post.user }}</p>
+			<p>{{ post.picture }}</p>
+			{% if comments %}
 				<ul>
 `				{% for comment in comments %}
-				    {{ comment.comment }} <br>
-				    {{ comment.user }} <br>
-				    {{ comment.date }} <br>
-				    {{ comment.image }}
+				   <p id="comment">{{ comment.comment }}<br>
+				   {{ comment.user }} <br>
+				   {{ comment.date }} <br>
+				   {{ comment.image }}<br>
+				    <a href="{% url 'add_comment' %}">Add Comment</a></p>
 				{% endfor %}
 				</ul>
 			    {% else %}
-				<p><strong>There are no comments yet</strong<p>
+				<p id="comment">There are no comments yet
+				<a href="{% url 'add_comment' %}">Add Comment</a></p>
 			    {% endif %}
-		    
+		{% endfor %}
+		</ul>    
 	    {% else %}
 		<strong>There are no posts present.</strong>
 	    {% endif %}
-	</p>
 	</div>
 
 	<div class="buttons_position">

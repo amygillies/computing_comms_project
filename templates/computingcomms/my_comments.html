@@ -22,8 +22,8 @@
 	{% if comments %}
 	<ul>
 	    {% for comment in comments %}
-		{% if comment.user == user.username %}
-		    <p> {{comment.post}}
+		{% if user == comments.user %}
+		    <p> {{comment.post}}<br>
 			{{comment.comment}} </p>
 		{% endif %}
 	    {% endfor %}

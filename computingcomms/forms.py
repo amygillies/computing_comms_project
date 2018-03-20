@@ -28,7 +28,7 @@ class ForumQuestionForm(forms.ModelForm):
 class UpdateProfile(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name')
+        fields = ('username', 'email', 'first_name', 'last_name',)
 
     def clean_email(self):
         username = self.cleaned_data.get('username')

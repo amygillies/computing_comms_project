@@ -22,7 +22,7 @@
 	{% if posts %}
 	<ul>
 	    {% for post in posts %}
-		{% if post.user == user.username %}
+		{% if user == post.user %}
 		    <p> {{post.question }} </p>
 		{% endif %}
 	    {% endfor %}

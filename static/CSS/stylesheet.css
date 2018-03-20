@@ -20,6 +20,22 @@ p {
 	margin-right: 30px;
 }
 
+#date {
+	font-size: 12pt;
+	color: black;
+	font-family: Calibri;
+}
+#user {
+	font-size: 10pt;
+	color: black;
+	font-family: Calibri;
+}
+#comment {
+	font-size: 12pt;
+	color: black;
+	font-family: Calibri;
+}
+
 #blue {
 	color: #00bfff;
 }
@@ -57,7 +73,6 @@ p {
 	width: 300px;
 }
 	
-
 .table {
 	border-collapse: separate;
 	border-spacing: 15px 50px;
