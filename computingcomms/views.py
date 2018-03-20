@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from computingcomms.models import ForumPost, UserProfile, Comment
-from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm, UpdateProfile
+from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm, UpdateProfile, CommentForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -88,6 +88,25 @@ def add_image(request):
     return render(request, 'computingcomms/add_image.html', {'forum_form': forum_form, 'registered': registered,})
 
 def add_comment(request):
+    registered = False
+
+    comment_form = CommentForm()
+
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        
+        if comment_form.is_valid():
+
+            user = request.user
+            comment = comment_form.save(commit=False)
+            comment.user = user
+            comment.save()
+            # redirect if the thing succeeded.
+            return render(request, 'computingcomms/forum.html', {'comment_form': comment_form, 'registered': registered,})
+    
+    return render(request, 'computingcomms/add_comment.html', {'comment_form': comment_form, 'registered': registered,})
+
+
     return render(request, 'computingcomms/add_comment.html', {})
 
 def contact(request):
