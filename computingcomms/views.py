@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from computingcomms.models import ForumPost, UserProfile, Comment
-from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm, UpdateProfile
+from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm, UpdateProfile, CommentForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -23,22 +23,22 @@ def quizzes(request):
     return render(request, 'computingcomms/quizzes.html', {})
 
 def jp2(request):
-    return HttpResponse("Computing Comms - Java Programming 2 Quiz")
+    return render(request, 'computingcomms/jp2.html', {})
 
 def oose2(request):
-    return HttpResponse("Computing Comms - Object Orientated Software Engineering Quiz")
+    return render(request, 'computingcomms/oose2.html', {})
 
 def wad2(request):
-    return HttpResponse("Computing Comms - Web App Development 2 Quiz")
+    return render(request, 'computingcomms/wad2.html', {})
 
 def ads2(request):
-    return HttpResponse("Computing Comms - Algorithms and Data Structures 2 Quiz")
+    return render(request, 'computingcomms/ads2.html', {})
 
 def cs2t(request):
-    return HttpResponse("Computing Comms - Computing Systems 2 Quiz")
+    return render(request, 'computingcomms/cs2t.html', {})
 
 def af2(request):
-    return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
+    return render(request, 'computingcomms/af2.html', {})
 
 def forum(request):
     posts_list = ForumPost.objects.order_by('-date')
@@ -68,18 +68,21 @@ def add_question(request):
 
 def add_image(request):
     registered = False
-
     forum_form = ForumPostForm()
 
     if request.method == 'POST':
-        
+
         forum_form = ForumPostForm(request.POST)
 
         if forum_form.is_valid():
             user = request.user
-            picture = forum_form.save(commit=False)
-            picture.user = user
-            picture.save()
+            post = forum_form.save(commit=False)
+            post.user = user
+            if 'picture' in request.FILES:
+                post.picture = request.FILES['picture']
+            else:
+                print("User has not submitted a picture")
+            post.save()
             return render(request, 'computingcomms/forum.html', {'forum_form': forum_form, 'registered': registered,})
         else:
             print(forum_form.errors)
@@ -87,7 +90,25 @@ def add_image(request):
     return render(request, 'computingcomms/add_image.html', {'forum_form': forum_form, 'registered': registered,})
 
 def add_comment(request):
-    return render(request, 'computingcomms/add_comment.html', {})
+    registered = False
+
+    comment_form = CommentForm()
+
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        
+        if comment_form.is_valid():
+
+            user = request.user
+            comment = comment_form.save(commit=False)
+            comment.user = user
+            comment.save()
+            # redirect if the thing succeeded.
+            return render(request, 'computingcomms/forum.html', {'comment_form': comment_form, 'registered': registered,})
+    
+    return render(request, 'computingcomms/add_comment.html', {'comment_form': comment_form, 'registered': registered,})
+
+   
 
 
 def contact(request):

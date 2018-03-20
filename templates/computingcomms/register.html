@@ -28,7 +28,7 @@
         <a href= "{% url 'home' %}">Return to the homepage.</a><br>
 {% else %}
 	Register here!
-	<form id = "user_form" method = "post" action = "{% url 'register' %} enctype = "multipart/form-data">
+	<form id = "user_form" method = "post" action = "{% url 'register' %}" enctype = "multipart/form-data">
 	<p>{% csrf_token %}
 	{{ user_form.as_p }}
 	{{ profile_form.as_p }}
@@ -42,6 +42,10 @@
   	<input type="radio" name="status" value="lecturer"> Lecturer<br>
   	<input type="radio" name="status" value="other"> Other
 	</form>
+
+	
+
+	
 
 {% endif %}
 </p>

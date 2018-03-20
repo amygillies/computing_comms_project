@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from computingcomms.models import UserProfile
 from computingcomms.models import ForumPost
+from computingcomms.models import Comment
 
 
 class UserForm(forms.ModelForm):
@@ -19,6 +20,11 @@ class ForumPostForm(forms.ModelForm):
     class Meta:
         model = ForumPost
         fields = ('question','picture',)
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('comment',)
 
 class ForumQuestionForm(forms.ModelForm):
     class Meta:

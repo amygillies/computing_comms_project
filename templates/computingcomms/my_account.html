@@ -27,13 +27,11 @@
 
 	
 	<div class="profile_pic" >
-	
-	    {% if userprofile.picture %}
-		<img src="{{ MEDIA_URL }}{{userprofile.picture }}" width="200" height="200" alt="{{user.username}}" />
-	    {% else %}
+        {% if user.userprofile.picture %}
+		<img src="{{ MEDIA_URL }}{{ user.userprofile.picture}}" width="200" height="200" alt="{{user.username}}" />
+        {% else %}
 		<img src="{% static "images/if_no_picture.jpg" %}" width="200" height="200" alt="no_picture"/>
-	   {% endif %}
-	
+        {% endif %}
 	</div>
 	
 	<div class="buttons_position">

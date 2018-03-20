@@ -33,7 +33,13 @@
 			<p>{{ post.question }}</p>
 			<p id="date">{{ post.date }}</p>
 			<p id="user">{{ post.user }}</p>
-			<p>{{ post.picture }}</p>
+                        {% if post.picture %}
+			    <p><img src="{{ MEDIA_URL }}{{ post.picture }}}" alt="no image"></p>
+                        {% else %}
+                            <div>
+                            <strong>No picture uploaded!</strong>
+                            </div>
+                        {% endif %}
 			{% if comments %}
 				<ul>
 `				{% for comment in comments %}
@@ -41,12 +47,18 @@
 				   {{ comment.user }} <br>
 				   {{ comment.date }} <br>
 				   {{ comment.image }}<br>
-				    <a href="{% url 'add_comment' %}">Add Comment</a></p>
-				{% endfor %}
+				   {% if user.is_authenticated %} 
+				   <a href="{% url 'add_comment' %}">Add Comment</a></p>
+				   {% else%}
+				   {% endif %}
+				   {% endfor %}
 				</ul>
 			    {% else %}
 				<p id="comment">There are no comments yet
+				{% if user.is_authenticated %} 
 				<a href="{% url 'add_comment' %}">Add Comment</a></p>
+				{% else%}
+				{% endif %}
 			    {% endif %}
 
 		{% endfor %}
@@ -58,11 +70,20 @@
 	</div>
 
 	<div class="buttons_position">
+	{% if user.is_authenticated %} 
 		<ul>
 		<a href="{% url 'my_account' %}"><button class="button">My Account</a></button><br><br>
 		<a href="{% url 'add_image' %}"><button class="button">Add Image</a></button><br><br>
 		<a href="{% url 'add_question' %}"><button class="button">Add Question</a></button>
 		</ul>
-	</div>
 	
+	{% else %}
+		<ul>
+		<a href="{% url 'home' %}"><button class="button">Home</a></button><br><br>
+		<a href="{% url 'login' %}"><button class="button">Sign In</a></button><br><br>
+		<a href="{% url 'register' %}"><button class="button">Sign Up</a></button>
+		</ul>
+
+	{% endif %}
+	</div>
 {% endblock %}
