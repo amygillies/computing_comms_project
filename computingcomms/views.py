@@ -84,6 +84,7 @@ def add_image(request):
             else:
                 print("User has not submitted a picture")
             post.save()
+            return render(request, 'computingcomms/forum.html', {'forum_form': forum_form, 'registered': registered,})
         else:
             print(forum_form.errors)
    
