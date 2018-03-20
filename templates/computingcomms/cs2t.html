@@ -1,1 +1,94 @@
-**** Computing Systems Quiz ****
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+	<script type="text/javascript" src = "/static/js/cs2tquiz.js"></script>
+</head>
+
+{% block title_block %}
+		Computing Comms - Quizzes
+{% endblock %}
+	
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+	</div>
+	<div>
+		<center><h2>Computing Systems 2 Quiz</h2></center>
+	</div>
+{% endblock %}
+
+
+{% block body_block %}
+
+	<form id = "cs2tquiz" name = "cs2tquiz">
+	
+	<p class="questions" id="questions">1. What are the key differences of a combinational circuit and a sequential circuit?</p>
+	<input type="radio" id="answers" name="question1" value="a"> Combinational – only contains logic gates and wires (no state), and its output is a boolean function of its inputs. Sequential – output depends on its current inputs and its past state, may contain flip flops and a clock<br/>
+	<input type="radio" id="answers" name="question1" value="b"> Combinational - output depends on its current inputs and its paste state, may contain flip flops and a clock. Sequential - only contains logic gates and wires (no state), and its output is a boolean function of its inputs.<br/>
+	<input type="radio" id="answers" name="question1" value="c"> Combinational – contains logic gates and wires and a clock (has state), output depends on its past state. Sequential – also has a clock and flip flops, however output is a Boolean function of its inputs depending on current inputs and past state <br/>
+	<input type="radio" id="answers" name="question1" value="d"> Combinational – only contains logic gates and wires (no state), and its output is a Boolean function of its inputs. Sequential – output depends on its current input and past state, however does not contain flip flops and a clock<br/>
+
+	<p class="questions" id="questions">2. Why do we need to mask interrupts?</p>
+	<input type="radio" id="answers" name="question2" value="a"> We could loose information, therefore the user cannot access this information that is lost <br/>
+	<input type="radio" id="answers" name="question2" value="b"> Makes it impossible for the user to do I/O, allocate memory and control the system <br/>
+	<input type="radio" id="answers" name="question2" value="c"> An interrupt may occur while we are in the middle of serving a previous interrupt, and if we were to pause processing the first interrupt and start processing the second right away, the system might be left in inconsistent state <br/>
+	<input type="radio" id="answers" name="question2" value="d"> Enforces the policy on privileged instructions<br/>
+	
+	<p class="questions" id="questions">3. What is an advantage of a static linker over dynamic linking?</p>
+	<input type="radio" id="answers" name="question3" value="a"> Object modules that are used by several different programs will be duplicated <br/>
+	<input type="radio" id="answers" name="question3" value="b"> Produces a standalone executable which can be launched without the need for runtime linking<br/>
+	<input type="radio" id="answers" name="question3" value="c"> Only one copy is needed for shared library procedures <br/>
+	<input type="radio" id="answers" name="question3" value="d"> If a library procedure is updated, its improvements will automatically be available to all the programs that can call it <br/>
+	
+	<p class="questions" id="questions">4. What is an advantage of CISC compared to RISC? </p>
+	<input type="radio" id="answers" name="question4" value="a"> Features a register file, so many variables can be kept in registers, thus reducing memory access <br/>
+	<input type="radio" id="answers" name="question4" value="b"> Only load/store access to memory; RX instructions perform no additional work, other than transferring data to/from RAM <br/>
+	<input type="radio" id="answers" name="question4" value="c"> Calculation instructions use only registers and they aren’t mixed with memory accesses; this makes calculations fast <br/>
+	<input type="radio" id="answers" name="question4" value="d"> Features a small set of registers, so not all variables can be kept in registers and instructions can have operands residing both in registers and in memory <br/>
+
+	<p class="questions" id="questions">5. What is the definition of a low level scheduler?</p>
+	<input type="radio" id="answers" name="question5" value="a"> manages CPU access, waiting queue, terminating processes, context switching, and executes the scheduling algorithm <br/>
+	<input type="radio" id="answers" name="question5" value="b"> machine that maintains schedules<br/>
+	<input type="radio" id="answers" name="question5" value="c"> adds new processes to the ready queue <br/>
+	<input type="radio" id="answers" name="question5" value="d"> times the program for the number of CPU cycles <br/>
+	
+	<p class="questions" id="questions">6.	What is the definition of paging?</p>
+	<input type="radio" id="answers" name="question6" value="a"> paging means moving a page of information from disk to memory, or from memory back to disk <br/>
+	<input type="radio" id="answers" name="question6" value="b"> when the OS maintains a page table for each address space <br/>
+	<input type="radio" id="answers" name="question6" value="c"> when the running process is interrupted, and the OS executes a page fault <br/>
+	<input type="radio" id="answers" name="question6" value="d"> when each load and store instruction must be checked <br/>
+	
+	<p class="questions" id="questions">7. What are the disadvantages of combining variables and code?</p>
+	<input type="radio" id="answers" name="question7" value="a"> The compiler or assembler can work out the address of each local variable relative to the address of the stack frame<br/>
+	<input type="radio" id="answers" name="question7" value="b"> Kept in stack frames <br/>
+	<input type="radio" id="answers" name="question7" value="c"> Cannot be shared and duplication errors <br/>
+	<input type="radio" id="answers" name="question7" value="d"> Variables are not placed in memory right after instructions  <br/>
+
+	<p class="questions" id="questions">8. What are the main levels of virtual memory?</p>
+	<input type="radio" id="answers" name="question8" value="a"> bulk memory and secondary memory only <br/>
+	<input type="radio" id="answers" name="question8" value="b"> registers, cache, RAM, secondary memory, bulk memory and offline memory <br/>
+	<input type="radio" id="answers" name="question8" value="c"> cache, stack, I/O, schedulers<br/>
+	<input type="radio" id="answers" name="question8" value="d"> ROM and RAM only <br/>
+	
+	<p class="questions" id="questions">9. What are the advantages of register-variable code compared to statement by statement style?</p>
+	<input type="radio" id="answers" name="question9" value="a"> Object code is concise, variable is kept in the same register across many statements, some statements are executed entirely in registers meaning the code may be shorter<br/>
+	<input type="radio" id="answers" name="question9" value="b"> Each statement is compiled into a separate block of code, and requires loads, computation then stores<br/>
+	<input type="radio" id="answers" name="question9" value="c"> The object code corresponds straightforwardly to the source code which may make the code shorter<br/>
+	<input type="radio" id="answers" name="question9" value="d"> A variable may appear in several different registers making code shorter<br/>
+	
+	<p class="questions" id="questions">10. What is meant by priority based in scheduling?</p>
+	<input type="radio" id="answers" name="question10" value="a"> Each process is first come first served, and will follow through with each process as they come<br/>
+	<input type="radio" id="answers" name="question10" value="b"> Where there is multiple queues and each queue has a different scheduling algorithm where jobs and can be moved from one queue to another <br/>
+	<input type="radio" id="answers" name="question10" value="c"> Each process has a priority and can be user defined; automatically generated by the OS based on criteria such as: memory requirements, other resource usage and time limits <br/>
+	<input type="radio" id="answers" name="question10" value="d"> d)	Only allows non-blocked messages to come through in which the first messages that aren’t blocked that come through are processed first <br/>
+	
+	<center><input id="button" type="button" value= "Submit" onclick = "check();"></center>
+	</form>
+	
+	<div id="after_submit">
+	<p id="number_correct"></p>
+	</div>
+	
+{% endblock %}

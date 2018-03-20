@@ -24,22 +24,22 @@ def quizzes(request):
     return render(request, 'computingcomms/quizzes.html', {})
 
 def jp2(request):
-    return HttpResponse("Computing Comms - Java Programming 2 Quiz")
+    return render(request, 'computingcomms/jp2.html', {})
 
 def oose2(request):
-    return HttpResponse("Computing Comms - Object Orientated Software Engineering Quiz")
+    return render(request, 'computingcomms/oose2.html', {})
 
 def wad2(request):
     return render(request, 'computingcomms/wad2.html', {})
 
 def ads2(request):
-    return HttpResponse("Computing Comms - Algorithms and Data Structures 2 Quiz")
+    return render(request, 'computingcomms/ads2.html', {})
 
 def cs2t(request):
-    return HttpResponse("Computing Comms - Computing Systems 2 Quiz")
+    return render(request, 'computingcomms/cs2t.html', {})
 
 def af2(request):
-    return HttpResponse("Computing Comms - Algorithmic Foundations 2 Quiz")
+    return render(request, 'computingcomms/af2.html', {})
 
 def forum(request):
     posts_list = ForumPost.objects.order_by('-date')

@@ -1,1 +1,91 @@
-**** Algorithmic Foundations Quiz ****
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+		Computing Comms - Quizzes
+{% endblock %}
+	
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+	</div>
+	<div>
+		<center><h2>Algorthmic Foundations 2 Quiz</h2></center>
+	</div>
+{% endblock %}
+
+
+{% block body_block %}
+	<script type="text/javascript" src = "/static/js/af2quiz.js"></script>
+	<form id = "af2quiz" name = "af2quiz">
+	
+	<p class="questions" id="questions">1. Let p, q and r be the proposition; p: you have the flu, q: you miss the final exam; r: you pass the course. What is the proposition (p ∧ q) ∨ (¬q ∧ r) as an English sentence?</p>
+	<input type="radio" id="answers" name="question1" value="a"> Either it holds that if you have the flu, then you do not pass the course, or it holds that if you miss the final exam, then you do not pass the course (or both) <br/>
+	<input type="radio" id="answers" name="question1" value="b"> Either you have the flu and miss the final exam, or you do not miss the final exam and pass the course <br/>
+	<input type="radio" id="answers" name="question1" value="c"> Either you have the flu, or you miss the final exam, or you pass the course <br/>
+	<input type="radio" id="answers" name="question1" value="d"> You do not miss the final exam if and only if you pass the course <br/>
+
+	<p class="questions" id="questions">2. Let S be the set of all sets and consider the following predicates: F(x): x is a finite set; I(x): x is an infinite set; S(x,y): x is contained in y; E(x): x is the empty set. What is ‘the empty set is a subset of every finite set’ in logical expressions? </p>
+	<input type="radio" id="answers" name="question2" value="a"> ∀x ∈ S. ∀y ∈ S.((E(x) ∧ F(y)) → S(x, y)) <br/>
+	<input type="radio" id="answers" name="question2" value="b"> ¬∃x ∈ S. ∃y ∈ S.(I(x) ∧ F(y) ∧ S(x, y)) <br/>
+	<input type="radio" id="answers" name="question2" value="c"> ∀x ∈ S. ∀y ∈ S.((F(y) ∧ S(x, y)) → F(x)) <br/>
+	<input type="radio" id="answers" name="question2" value="d"> ∃x ∈ S. ¬F(x) or ∃x ∈ S. I(x) <br/>
+	
+	<p class="questions" id="questions">3. Find whether the function ‘h1 : Z → Z where h1(x) = x mod 10’ is injective or surjective, and find out whether it has an inverse.</p>
+	<input type="radio" id="answers" name="question3" value="a"> Injective, surjective so inverse exists  <br/>
+	<input type="radio" id="answers" name="question3" value="b"> Not injective, surjective and doesn’t have an inverse <br/>
+	<input type="radio" id="answers" name="question3" value="c"> Not injective, not surjective and doesn’t have an inverse  <br/>
+	<input type="radio" id="answers" name="question3" value="d"> Function is injective and bijective so inverse exists <br/>
+	
+	<p class="questions" id="questions">4. Find gcd(20!, 12!) </p>
+	<input type="radio" id="answers" name="question4" value="a"> 20! <br/>
+	<input type="radio" id="answers" name="question4" value="b"> 13! <br/>
+	<input type="radio" id="answers" name="question4" value="c"> 12! <br/>
+	<input type="radio" id="answers" name="question4" value="d"> 1! <br/>
+
+	<p class="questions" id="questions">5. What method of proof would you need to use to prove or disprove that the product of two irrational numbers is irrational?</p>
+	<input type="radio" id="answers" name="question5" value="a"> direct proof <br/>
+	<input type="radio" id="answers" name="question5" value="b"> proof by counterexample  <br/>
+	<input type="radio" id="answers" name="question5" value="c"> proof by contradiction <br/>
+	<input type="radio" id="answers" name="question5" value="d"> vacuous proof<br/>
+	
+	<p class="questions" id="questions">6. For f(i) for i = 1,2,3,4 given f(n) is defined recursively by f(0) = 3 and for each n&ge0, what is the solution to f(n+1) = -2f(n):</p>
+	<input type="radio" id="answers" name="question6" value="a"> 3, 3, 3, 3 <br/>
+	<input type="radio" id="answers" name="question6" value="b"> 1, -3, 13, 141  <br/>
+	<input type="radio" id="answers" name="question6" value="c"> 6, -12, 24, -48 <br/>
+	<input type="radio" id="answers" name="question6" value="d"> -6, 12, -24, 48  <br/>
+	
+	<p class="questions" id="questions">7. How many one-one functions are there from a set with 5 elements to a set with 4 elements?</p>
+	<input type="radio" id="answers" name="question7" value="a"> 0 <br/>
+	<input type="radio" id="answers" name="question7" value="b"> 120 <br/>
+	<input type="radio" id="answers" name="question7" value="c"> 720 <br/>
+	<input type="radio" id="answers" name="question7" value="d"> 1 <br/>
+
+	<p class="questions" id="questions">8. Consider the following graph: G = (&#123;a, b, c, d, e, f, g&#125;, &#123;&#123;a, b&#125;, &#123;b, c&#125;, &#123;c, d&#125;, &#123;a, d&#125;, &#123;d, g&#125;, &#123;d, e&#125;, &#123;f, g&#125;, &#123;e, f&#125;&#125;). What is the degree sequence of G?</p>
+	<input type="radio" id="answers" name="question8" value="a"> 4 <br/>
+	<input type="radio" id="answers" name="question8" value="b"> 2, 2, 2, 2, 2, 2, 2<br/>
+	<input type="radio" id="answers" name="question8" value="c"> 4, 2, 2, 2, 2, 2, 2 <br/>
+	<input type="radio" id="answers" name="question8" value="d"> 0 <br/>
+	
+	<p class="questions" id="questions">9. Is the binary relation ‘R1 over N×N where (a, b) ∈ R1 if and only if a|b’ reflexive, symmetric, anti-symmetric and transitive?</p>
+	<input type="radio" id="answers" name="question9" value="a"> not reflective, not symmetric, not anti-symmetric, not transitive<br/>
+	<input type="radio" id="answers" name="question9" value="b"> not reflective, symmetric, not anti-symmetric, not transitive <br/>
+	<input type="radio" id="answers" name="question9" value="c"> reflective, not symmetric, anti-symmetric, not transitive <br/>
+	<input type="radio" id="answers" name="question9" value="d"> reflective, not symmetric, anti-symmetric, transitive <br/>
+	
+	<p class="questions" id="questions">10.	Determine whether the theorem ‘If a ≡ b (mod m), and a ≡ c (mod m), then a ≡ b + c (mod m)’ is true or false?</p>
+	<input type="radio" id="answers" name="question10" value="a"> true <br/>
+	<input type="radio" id="answers" name="question10" value="b"> false <br/>
+	
+	<center><input id="button" type="button" value= "Submit" onclick = "check();"></center>
+	</form>
+	
+	<div id="after_submit">
+	<p id="number_correct"></p>
+	</div>
+	
+{% endblock %}

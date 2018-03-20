@@ -1,1 +1,94 @@
-**** OOSE Quiz ****
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+		Computing Comms - Quizzes
+{% endblock %}
+	
+{% block head_block %}
+	<div>
+		<center><h1>Computing Comms</h1></center>
+	</div>
+	<div>
+		<center><h2>Object Orientated Software Engineering 2 Quiz</h2></center>
+	</div>
+{% endblock %}
+
+
+{% block body_block %}
+
+	<script type="text/javascript" src = "/static/js/oose2quiz.js"></script>
+	<form id = "oose2quiz" name = "oose2quiz">
+	
+	<p class="questions" id="questions">1. How long, in bits, is a long value?</p>
+	<input type="radio" id="answers" name="question1" value="a"> 8 bits<br/>
+	<input type="radio" id="answers" name="question1" value="b"> 64 bits <br/>
+	<input type="radio" id="answers" name="question1" value="c"> 16 bits <br/>
+	<input type="radio" id="answers" name="question1" value="d"> 128 bits <br/>
+
+	<p class="questions" id="questions">2. What is the output of the following statement? <br/> system.out.println(“10”+1); </p>
+	<input type="radio" id="answers" name="question2" value="a"> 10+1 <br/>
+	<input type="radio" id="answers" name="question2" value="b"> 10 1 <br/>
+	<input type="radio" id="answers" name="question2" value="c"> 11 <br/>
+	<input type="radio" id="answers" name="question2" value="d"> 101 <br/>
+	
+	<p class="questions" id="questions">3. What is the State Pattern Key?</p>
+	<input type="radio" id="answers" name="question3" value="a"> The contect delegates to the past state to handle request <br/>
+	<input type="radio" id="answers" name="question3" value="b"> The pattern encapsulates state into the same class<br/>
+	<input type="radio" id="answers" name="question3" value="c"> Current state wont change, and each state has a similar behaviour<br/>
+	<input type="radio" id="answers" name="question3" value="d"> Pattern encapsulates state into separate classes and the context delegates to the current state to handle request  <br/>
+	
+	<p class="questions" id="questions">4. What is the definition of measure in software metrics ?</p>
+	<input type="radio" id="answers" name="question4" value="a"> combination of metrics that provide insights into the software process or project or product itself <br/>
+	<input type="radio" id="answers" name="question4" value="b"> quantitative measure of degree to which a system, component or process possesses a given attribute  <br/>
+	<input type="radio" id="answers" name="question4" value="c"> quantitative indication of extent amount, dimension, capacity, or size of some attribute of a product or process  <br/>
+	<input type="radio" id="answers" name="question4" value="d"> all of the above  <br/>
+
+	<p class="questions" id="questions">5. What is a control flow graph and what are the 2 parts involved in the graph?</p>
+	<input type="radio" id="answers" name="question5" value="a"> representation, using graph notation of all paths that might be traversed through a program during its execution and edges and nodes are the two main parts of a graph <br/>
+	<input type="radio" id="answers" name="question5" value="b"> each line of a program represented as a graph; where junctions and lines are used as the two parts involved <br/>
+	<input type="radio" id="answers" name="question5" value="c"> a tree map of the program in the order they need to be executed; branches and roots are the two parts involved<br/>
+	<input type="radio" id="answers" name="question5" value="d"> a hierarchy map of the program in the order of execution, where the constructor is at the top of the map; edges and nodes are used as the two main parts <br/>
+	
+	<p class="questions" id="questions">6. When should Singleton be considered when which of the following criteria are satisfied: </p>
+	<input type="radio" id="answers" name="question6" value="a"> 1. Create a java class with a private constructor, 2. Create a way to control the instantiation of this class, 3. Add a private static variable unique of type is Singleton. and assign a new instance to unique the first time its created <br/>
+	<input type="radio" id="answers" name="question6" value="b"> 1. We can make sure that getInstance method is synchronized in some way, so the two threads can’t get near the state of execution, 2. We could create a Singleton but not using lazy instantiation <br/>
+	<input type="radio" id="answers" name="question6" value="c"> 1. Ownership of the single instance cannot be reasonably assigned, 2. Lazy initialization is desirable, 3. Global access is not otherwise provided for <br/>
+	<input type="radio" id="answers" name="question6" value="d"> 1. Ownership of the single instance can be assigned, 2. Lazy initialization is undesirable, 3. Global access in provided for <br/>
+	
+	<p class="questions" id="questions">7.What is a bug? </p>
+	<input type="radio" id="answers" name="question7" value="a"> an error or defect in software that may cause a program to malfunction  <br/>
+	<input type="radio" id="answers" name="question7" value="b"> a harmful microorganism<br/>
+	<input type="radio" id="answers" name="question7" value="c"> finding or fixing a program with debugging software <br/>
+	<input type="radio" id="answers" name="question7" value="d"> a logical error on a program causing a program to crash  <br/>
+
+	<p class="questions" id="questions">8. What does unit testing do?</p>
+	<input type="radio" id="answers" name="question8" value="a"> where the input domain tends to split into partitions and it tests each partition   <br/>
+	<input type="radio" id="answers" name="question8" value="b"> a framework for writing tests<br/>
+	<input type="radio" id="answers" name="question8" value="c"> uses a random number generator to generate test cases  <br/>
+	<input type="radio" id="answers" name="question8" value="d"> looks for errors in a subsystem in isolation <br/>
+	
+	<p class="questions" id="questions">9. Why is the format of the URI of an RESTful API very important? </p>
+	<input type="radio" id="answers" name="question9" value="a"> because it may use plural to indicate that a specific type of resource is more than one <br/>
+	<input type="radio" id="answers" name="question9" value="b"> because the resources are dependent on other sources <br/>
+	<input type="radio" id="answers" name="question9" value="c"> because the client service programmer will need to know the URI inorder to appropriately write code that makes http calls to URIs  <br/>
+	<input type="radio" id="answers" name="question9" value="d"> because they are resistant to change <br/>
+	
+	<p class="questions" id="questions">10. What level of the Richardson Maturity Model uses the Swam of POX (Plain Old XML)?</p>
+	<input type="radio" id="answers" name="question10" value="a"> Level 0 – Not Restful <br/>
+	<input type="radio" id="answers" name="question10" value="b"> Level 1 – Resource URI <br/>
+	<input type="radio" id="answers" name="question10" value="c"> Level 2 – HTTP Methods  <br/>
+	<input type="radio" id="answers" name="question10" value="d"> Level 3 – HATEOS <br/>
+	
+	<center><input id="button" type="button" value= "Submit" onclick = "check();"></center>
+	</form>
+	
+	<div id="after_submit">
+	<p id="number_correct"></p>
+	</div>
+	
+{% endblock %}
