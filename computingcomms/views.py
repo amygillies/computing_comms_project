@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from computingcomms.models import ForumPost, Comment
 
@@ -106,17 +106,18 @@ def add_image(request):
 
 def add_comment(request):
     registered = False
-
     comment_form = CommentForm()
-
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
-        
+        comment_form = CommentForm(request.POST)
+        question = request.POST.get('question')
+        print (comment_form.is_valid())
+
         if comment_form.is_valid():
 
             user = request.user
             comment = comment_form.save(commit=False)
             comment.user = user
+            comment.post_id = question
             comment.save()
             # redirect if the thing succeeded.
             return render(request, 'computingcomms/forum.html', {'comment_form': comment_form, 'registered': registered,})
@@ -163,12 +164,15 @@ def edit_account(request):
 
     if request.method == 'POST':
         form = UpdateProfile(request.POST, instance=request.user)
-        form.actual_user = request.user
+        
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('my_account'))
+            return HttpResponseRedirect(reverse('login'))
+        else:
+            return HttpResponseRedirect(reverse('edit_account'))
+            
     else:
-        form = UpdateProfile()
+        form = UpdateProfile(instance=request.user)
 
     return render(request, 'computingcomms/edit_account.html',{'form' : form})
     

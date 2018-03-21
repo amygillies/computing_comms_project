@@ -34,11 +34,15 @@
 			<p id="date">{{ post.date }}</p>
 			<p id="user">{{ post.user }}</p>
                         {% if post.picture %}
+<<<<<<< HEAD
 			    <p><img src="{{ MEDIA_URL }}{{ post.picture }}}" alt="no image"></p>
                         {% else %}
                             <div>
                             <p><strong>No picture uploaded!</strong><p>
                             </div>
+=======
+			    <p><img src="{{ MEDIA_URL }}{{ post.picture }}" alt="no image"></p>
+>>>>>>> origin/master
                         {% endif %}
 			{% if comments %}
 				<ul>
