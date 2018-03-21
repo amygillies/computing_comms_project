@@ -64,7 +64,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to='comment_images', blank=True)
     date = models.DateTimeField(auto_now=True)
-    post = models.ForeignKey(ForumPost, on_delete=models.DO_NOTHING)
+    post = models.ForeignKey('computingcomms.ForumPost', related_name = 'comment' , on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.user + " posted to " + self.post

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from computingcomms.models import UserProfile
 from computingcomms.models import ForumPost
 from computingcomms.models import Comment
+from django.contrib.auth.forms import UserCreationForm
 
 
 class UserForm(forms.ModelForm):
@@ -31,24 +32,19 @@ class ForumQuestionForm(forms.ModelForm):
         model = ForumPost
         fields = ('question',)
 
-class UpdateProfile(forms.ModelForm):
+class UpdateProfile(UserCreationForm):
+    password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name',)
+        fields = ('username', 'password1', 'password2', 'first_name', 'last_name',)
 
-    def clean_email(self):
-        username = self.cleaned_data.get('username')
-        email = self.cleaned_data.get('email')
 
-        if email and User.objects.filter(email=email).exclude(username=username).count():
-            raise forms.ValidationError('This email address is already in use. Please supply a different email address.')
-        return email
+    def save(self, commit=True):
+        user = super(UpdateProfile, self).save(commit=False)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
 
-        def save(self, commit=True):
-            user = super(RegistrationForm, self).save(commit=False)
-            user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
 
-            if commit:
-                user.save()
-
-            return user
+        return user

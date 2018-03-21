@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 
@@ -96,13 +96,15 @@ def add_comment(request):
     comment_form = CommentForm()
 
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
+        comment_form = CommentForm(request.POST)
         
         if comment_form.is_valid():
 
             user = request.user
+            post = request.post
             comment = comment_form.save(commit=False)
             comment.user = user
+            comment.post = post
             comment.save()
             # redirect if the thing succeeded.
             return render(request, 'computingcomms/forum.html', {'comment_form': comment_form, 'registered': registered,})
@@ -146,7 +148,7 @@ def sign_out(request):
 def edit_account(request):
 
     if request.method == 'POST':
-        form = UpdateProfile(request.POST, instance=request.user)
+        form = UpdateProfile(request.POST)
         form.actual_user = request.user
         if form.is_valid():
             form.save()
