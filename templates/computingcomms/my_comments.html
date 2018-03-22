@@ -20,6 +20,7 @@
 
 	<div>
 	{% if comments %}
+	<p><strong>The comments you have posted: </strong>
 	<ul>
 	    {% for comment in comments %}
 		{% if user == comments.user %}
@@ -29,7 +30,7 @@
 	    {% endfor %}
 	</ul>
 	{% else %}
-	    <p><strong> You didn't added any comments yet! </strong></p>
+	    <p><strong> You haven't added any comments yet! </strong></p>
 	{% endif %}
 	</div>
 

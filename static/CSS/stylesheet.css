@@ -154,8 +154,9 @@ p {
 
 .scores{
 	position: relative;
-	top: 40px;
-	background-color: #F5FFFA;
+	top: 50px;
+	left: 325px;
+	background-color:  #F0F8FF;
 	border: none;
 	color: navy;
 	text-align: center;
@@ -170,8 +171,8 @@ p {
 
 .profile_pic {
 	position: relative;
-	left: 650px;
-	bottom: 300px;
+	left: 250px;
+	top: -400px;
 }
 	
 #after_submit {
