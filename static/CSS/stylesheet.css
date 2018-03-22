@@ -1,7 +1,7 @@
 h1 {
-    font-size: 40pt;
-    text-align: center;
-    color: #00ccff;
+   	font-size: 40pt;
+  	text-align: center;
+   	color: #00ccff;
 	font-family: Bernard MT Condensed;
 }
 
@@ -177,14 +177,13 @@ p {
 	
 #after_submit {
 	visibility: hidden;
-	background: #000099;
+	background: #00ccff;
 	padding: 10px 20px 10px 20px;
 	width: 400px;
 	border-radius: 20px;
 	float: left;
 	margin-left: 20px;
 	font-size: 30px;
-
 
 }
 
@@ -213,6 +212,11 @@ p {
 	font-weight: bold; 
 }
 
+#question1 {
+	font-weight: bold;
+	padding-right: 350px
+}
+
 #answers {
 	font-size: 16pt;
 	color: black;
@@ -225,8 +229,24 @@ p {
 	
 }
 
+#number_correct {
+	color: white;
+	font-weight: bold;
+	font-style: italic;	
+}
+
 body {
 	font-family: Calibri;
 	color: black;
 	font-size: 16pt;
+}
+
+input[type=radio] {
+	margin-right: 12px;
+}
+
+label {
+	margin-left: 30px;
+	display: flex;
+	padding-right: 100px;
 }

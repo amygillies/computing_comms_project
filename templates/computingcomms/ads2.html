@@ -21,86 +21,99 @@
 
 {% block body_block %}
 
-	<div class="quiz_buttons_position">
+	<div class="buttons_position">
 		<a href="http://moodle2.gla.ac.uk/course/view.php?id=2860"><button class="button">ADS2 Moodle Page</a></button><br><br>
 	</div>	
 
 	<script type="text/javascript" src = "/static/js/ads2quiz.js"></script>
 	<form id = "ads2quiz" name = "ads2quiz"> 
 	
-	<p class="questions" id="questions">1. Given a variable-size queue q, we perform following operation:</p>
+	<p class="questions" id="question1">1. Given a variable-size queue q, we perform following operation:</p>
 	<p id="questions"> for element in range(1,5 ): <br/> &emsp; q.enqueue(element) <br/> &emsp; q.enqueue(2*element) <br/> &emsp; q.dequeue() <br/> What will be the value at the head of the queue, i.e. the value returned by the next call to dequeue()? </p>
-	<input type="radio" id="answers" name="question1" value="a"> 6<br/>
-	<input type="radio" id="answers" name="question1" value="b"> 5 <br/>
-	<input type="radio" id="answers" name="question1" value="c"> 4 <br/>
-	<input type="radio" id="answers" name="question1" value="d"> 10 <br/>
+	<input type="radio" id="answers" name="question1" value="a"> <label> 6</label><br/>
+	<input type="radio" id="answers" name="question1" value="b"> <label> 5 </label><br/>
+	<input type="radio" id="answers" name="question1" value="c"> <label> 4 </label><br/>
+	<input type="radio" id="answers" name="question1" value="d"> <label> 10 </label><br/>
 
 	<p class="questions" id="questions">2. Which of the given complexities is the fastest: </p>
-	<input type="radio" id="answers" name="question2" value="a"> O(n!) factorial <br/>
-	<input type="radio" id="answers" name="question2" value="b"> O(log n) logarithmic <br/>
-	<input type="radio" id="answers" name="question2" value="c"> O(n) linear <br/>
-	<input type="radio" id="answers" name="question2" value="d"> O(2^n) exponential <br/>
+	<input type="radio" id="answers" name="question2" value="a"> <label> O(n!) factorial </label><br/>
+	<input type="radio" id="answers" name="question2" value="b"> <label> O(log n) logarithmic </label><br/>
+	<input type="radio" id="answers" name="question2" value="c"> <label> O(n) linear </label><br/>
+	<input type="radio" id="answers" name="question2" value="d"> <label> O(2^n) exponential </label><br/>
 	
 	<p class="questions" id="questions">3. Given a hash table which n buckets which uses linked lists for collision handling, and a set of n key-value pairs. In the  worst case in terms of memory usage, how many pointers need to be stored if there are collisions? An empty bucket stores a single null pointer.</p>
-	<input type="radio" id="answers" name="question3" value="a"> 2n <br/>
-	<input type="radio" id="answers" name="question3" value="b"> n^2 <br/>
-	<input type="radio" id="answers" name="question3" value="c"> n <br/>
-	<input type="radio" id="answers" name="question3" value="d"> 3n-1 <br/>
+	<input type="radio" id="answers" name="question3" value="a"> <label> 2n </label><br/>
+	<input type="radio" id="answers" name="question3" value="b"> <label> n^2 </label><br/>
+	<input type="radio" id="answers" name="question3" value="c"> <label> n </label><br/>
+	<input type="radio" id="answers" name="question3" value="d"> <label> 3n-1 </label><br/>
 	
 	<p class="questions" id="questions">4.  What is the correct result for a postorder traversal of the following generic tree? The tree is expressed using Python tuples: (node element, list of child nodes) <br> tree = (1, [(2, []), (3, []), (4, [])])</p>
-	<input type="radio" id="answers" name="question4" value="a"> 2341 <br/>
-	<input type="radio" id="answers" name="question4" value="b"> 1234 <br/>
-	<input type="radio" id="answers" name="question4" value="c"> 3421 <br/>
-	<input type="radio" id="answers" name="question4" value="d"> 2341 <br/>
+	<input type="radio" id="answers" name="question4" value="a"> <label> 2341 </label><br/>
+	<input type="radio" id="answers" name="question4" value="b"> <label> 1234 </label><br/>
+	<input type="radio" id="answers" name="question4" value="c"> <label> 3421 </label><br/>
+	<input type="radio" id="answers" name="question4" value="d"> <label> 2341 </label><br/>
 
 	<p class="questions" id="questions"> What is the correct result for a breadth-first traversal of the following tree? The tree is expressed using Python tuples: (node element, list of child nodes) <br/> tree = (J, [(A, []), (O, []), (H, [])])</p>
-	<input type="radio" id="answers" name="question5" value="a"> HOAJ <br/>
-	<input type="radio" id="answers" name="question5" value="b"> JAOH <br/>
-	<input type="radio" id="answers" name="question5" value="c"> AOHJ <br/>
-	<input type="radio" id="answers" name="question5" value="d"> AHOJ <br/>
+	<input type="radio" id="answers" name="question5" value="a"> <label> HOAJ </label><br/>
+	<input type="radio" id="answers" name="question5" value="b"> <label> JAOH </label><br/>
+	<input type="radio" id="answers" name="question5" value="c"> <label> AOHJ </label><br/>
+	<input type="radio" id="answers" name="question5" value="d"> <label> AHOJ </label><br/>
 	
 	<p class="questions" id="questions">6. In Java, we might represent a set of integers using a TreeSet. What is the complexity of adding an element to the set?  </p>
-	<input type="radio" id="answers" name="question6" value="a"> O(log n) <br/>
-	<input type="radio" id="answers" name="question6" value="b"> O(n) <br/>
-	<input type="radio" id="answers" name="question6" value="c"> O(2n) <br/>
-	<input type="radio" id="answers" name="question6" value="d"> O(1) <br/>
+	<input type="radio" id="answers" name="question6" value="a"> <label> O(log n) </label><br/>
+	<input type="radio" id="answers" name="question6" value="b"> <label> O(n) </label><br/>
+	<input type="radio" id="answers" name="question6" value="c"> <label> O(2n) </label><br/>
+	<input type="radio" id="answers" name="question6" value="d"> <label> O(1) </label><br/>
 	
 	<p class="questions" id="questions">7. Which of the following is not a data structure?</p>
-	<input type="radio" id="answers" name="question7" value="a"> an array <br/>
-	<input type="radio" id="answers" name="question7" value="b"> a stack<br/>
-	<input type="radio" id="answers" name="question7" value="c"> a linked list<br/>
-	<input type="radio" id="answers" name="question7" value="d"> a binary tree <br/>
+	<input type="radio" id="answers" name="question7" value="a"> <label> an array </label><br/>
+	<input type="radio" id="answers" name="question7" value="b"> <label> a stack</label><br/>
+	<input type="radio" id="answers" name="question7" value="c"> <label> a linked list</label><br/>
+	<input type="radio" id="answers" name="question7" value="d"> <label> a binary tree </label><br/>
 
 	<p class="questions" id="questions">8. Which tree-traversal algorithm is recursive backtracking equivalent to?</p>
-	<input type="radio" id="answers" name="question8" value="a"> Height-first <br/>
-	<input type="radio" id="answers" name="question8" value="b"> None <br/>
-	<input type="radio" id="answers" name="question8" value="c"> Depth-first <br/>
-	<input type="radio" id="answers" name="question8" value="d"> Breadth-first <br/>
+	<input type="radio" id="answers" name="question8" value="a"> <label> Height-first </label><br/>
+	<input type="radio" id="answers" name="question8" value="b"> <label> None </label><br/>
+	<input type="radio" id="answers" name="question8" value="c"> <label> Depth-first </label><br/>
+	<input type="radio" id="answers" name="question8" value="d"> <label> Breadth-first </label><br/>
 	
 	<p class="questions" id="questions">9. Is the following algorithm a terminating recursion? </p>
 	<p id="answer"> def f(); <br/> &emsp; if f(): return f() <br/> &emsp; else: return True </p>
-	<input type="radio" id="answers" name="question9" value="a"> Yes<br/>
-	<input type="radio" id="answers" name="question9" value="b"> No, it never terminates <br/>
-	<input type="radio" id="answers" name="question9" value="c"> No, it does not call itself <br/>
-	<input type="radio" id="answers" name="question9" value="d"> Impossible to tell <br/>
+	<input type="radio" id="answers" name="question9" value="a"> <label> Yes</label><br/>
+	<input type="radio" id="answers" name="question9" value="b"> <label> No, it never terminates </label><br/>
+	<input type="radio" id="answers" name="question9" value="c"> <label> No, it does not call itself </label><br/>
+	<input type="radio" id="answers" name="question9" value="d"> <label> Impossible to tell </label><br/>
 	
 	<p class="questions" id="questions">10. Which sentence about open addressing is true?</p>
-	<input type="radio" id="answers" name="question10" value="a"> Open	addressing saves space,	but is complicated, and	may be slower<br/>
-	<input type="radio" id="answers" name="question10" value="b"> Open addressing saves space and is easy, but may be slower <br/>
-	<input type="radio" id="answers" name="question10" value="c"> Open addressing saves spaces and may be faster, but it's complicated  <br/>
-	<input type="radio" id="answers" name="question10" value="d"> Open adressing saves spaces, may be faster and it's not complicated <br/>
+	<input type="radio" id="answers" name="question10" value="a"> <label> Open	addressing saves space,	but is complicated, and	may be slower</label><br/>
+	<input type="radio" id="answers" name="question10" value="b"> <label> Open addressing saves space and is easy, but may be slower </label><br/>
+	<input type="radio" id="answers" name="question10" value="c"> <label> Open addressing saves spaces and may be faster, but it's complicated  </label><br/>
+	<input type="radio" id="answers" name="question10" value="d"> <label> Open addressing saves spaces, may be faster and it's not complicated </label><br/>
 	
-	<center><input id="button" type="button" value= "Submit" onclick = "check();"></center>
-	</form>
+	{% if user.is_authenticated %}
+		<center><input id="button" type="button" value= "Submit" onclick = "checkandsubmit();"></center>
+		</form>
+		
+		<form id="ads2_form" method="post" action="{% url 'ads2' %}">
+		<center>
+		<div id="after_submit">
+		<p id="number_correct"></p>
+		{% csrf_token %}
+		<input type="hidden" name="ads2score" id="correct" />
+		</div>
+		</center>
+		</form>
 	
-	<form id="ads2_form" method="post" action="{% url 'ads2' %}">
-	<center>
-	<div id="after_submit">
-	<p id="number_correct"></p>
-	{% csrf_token %}
-	<input type="hidden" name="ads2score" id="correct" />
-	</div>
-	</center>
-	</form>
+	{% else %}
+		<center><input id="button" type="button" value="Submit" onclick = "check();"></center>
+		</form>
+		
+		<center>
+		<div id="after_submit">
+		<p id="number_correct"></p>
+		</div>
+		</center>
+	
+	{% endif %}
 	
 {% endblock %}

@@ -21,84 +21,98 @@
 
 {% block body_block %}
 
-	<div class="quiz_buttons_position">
+	<div class="buttons_position">
 		<a href="http://moodle2.gla.ac.uk/course/view.php?id=11501"><button class="button">OOSE2 Moodle Page</a></button><br><br>
 	</div>	
 
 	<script type="text/javascript" src = "/static/js/oose2quiz.js"></script>
 	<form id = "oose2quiz" name = "oose2quiz">
 	
-	<p class="questions" id="questions">1. How long, in bits, is a long value?</p>
-	<input type="radio" id="answers" name="question1" value="a"> 8 bits<br/>
-	<input type="radio" id="answers" name="question1" value="b"> 64 bits <br/>
-	<input type="radio" id="answers" name="question1" value="c"> 16 bits <br/>
-	<input type="radio" id="answers" name="question1" value="d"> 128 bits <br/>
+	<p class="questions" id="question1">1. How long, in bits, is a long value?</p>
+	<input type="radio" id="answers" name="question1" value="a"> <label> 8 bits</label><br/>
+	<input type="radio" id="answers" name="question1" value="b"> <label> 64 bits </label><br/>
+	<input type="radio" id="answers" name="question1" value="c"> <label> 16 bits </label><br/>
+	<input type="radio" id="answers" name="question1" value="d"> <label> 128 bits </label><br/>
 
 	<p class="questions" id="questions">2. What is the output of the following statement? <br/> system.out.println(“10”+1); </p>
-	<input type="radio" id="answers" name="question2" value="a"> 10+1 <br/>
-	<input type="radio" id="answers" name="question2" value="b"> 10 1 <br/>
-	<input type="radio" id="answers" name="question2" value="c"> 11 <br/>
-	<input type="radio" id="answers" name="question2" value="d"> 101 <br/>
+	<input type="radio" id="answers" name="question2" value="a"> <label> 10+1 </label><br/>
+	<input type="radio" id="answers" name="question2" value="b"> <label> 10 1 </label><br/>
+	<input type="radio" id="answers" name="question2" value="c"> <label>11 </label><br/>
+	<input type="radio" id="answers" name="question2" value="d"> <label>101 </label><br/>
 	
 	<p class="questions" id="questions">3. What is the State Pattern Key?</p>
-	<input type="radio" id="answers" name="question3" value="a"> The contect delegates to the past state to handle request <br/>
-	<input type="radio" id="answers" name="question3" value="b"> The pattern encapsulates state into the same class<br/>
-	<input type="radio" id="answers" name="question3" value="c"> Current state wont change, and each state has a similar behaviour<br/>
-	<input type="radio" id="answers" name="question3" value="d"> Pattern encapsulates state into separate classes and the context delegates to the current state to handle request  <br/>
+	<input type="radio" id="answers" name="question3" value="a"> <label>The contect delegates to the past state to handle request </label><br/>
+	<input type="radio" id="answers" name="question3" value="b"> <label>The pattern encapsulates state into the same class</label><br/>
+	<input type="radio" id="answers" name="question3" value="c"> <label>Current state wont change, and each state has a similar behaviour</label><br/>
+	<input type="radio" id="answers" name="question3" value="d"> <label>Pattern encapsulates state into separate classes and the context delegates to the current state to handle request  </label><br/>
 	
 	<p class="questions" id="questions">4. What is the definition of measure in software metrics ?</p>
-	<input type="radio" id="answers" name="question4" value="a"> combination of metrics that provide insights into the software process or project or product itself <br/>
-	<input type="radio" id="answers" name="question4" value="b"> quantitative measure of degree to which a system, component or process possesses a given attribute  <br/>
-	<input type="radio" id="answers" name="question4" value="c"> quantitative indication of extent amount, dimension, capacity, or size of some attribute of a product or process  <br/>
-	<input type="radio" id="answers" name="question4" value="d"> all of the above  <br/>
+	<input type="radio" id="answers" name="question4" value="a"> <label>combination of metrics that provide insights into the software process or project or product itself </label><br/>
+	<input type="radio" id="answers" name="question4" value="b"> <label>quantitative measure of degree to which a system, component or process possesses a given attribute  </label><br/>
+	<input type="radio" id="answers" name="question4" value="c"> <label>quantitative indication of extent amount, dimension, capacity, or size of some attribute of a product or process  </label><br/>
+	<input type="radio" id="answers" name="question4" value="d"> <label>all of the above  </label><br/>
 
 	<p class="questions" id="questions">5. What is a control flow graph and what are the 2 parts involved in the graph?</p>
-	<input type="radio" id="answers" name="question5" value="a"> representation, using graph notation of all paths that might be traversed through a program during its execution and edges and nodes are the two main parts of a graph <br/>
-	<input type="radio" id="answers" name="question5" value="b"> each line of a program represented as a graph; where junctions and lines are used as the two parts involved <br/>
-	<input type="radio" id="answers" name="question5" value="c"> a tree map of the program in the order they need to be executed; branches and roots are the two parts involved<br/>
-	<input type="radio" id="answers" name="question5" value="d"> a hierarchy map of the program in the order of execution, where the constructor is at the top of the map; edges and nodes are used as the two main parts <br/>
+	<input type="radio" id="answers" name="question5" value="a"> <label>representation, using graph notation of all paths that might be traversed through a program during its execution and edges and nodes are the two main parts of a graph </label><br/>
+	<input type="radio" id="answers" name="question5" value="b"> <label>each line of a program represented as a graph; where junctions and lines are used as the two parts involved </label><br/>
+	<input type="radio" id="answers" name="question5" value="c"> <label>a tree map of the program in the order they need to be executed; branches and roots are the two parts involved</label><br/>
+	<input type="radio" id="answers" name="question5" value="d"> <label>a hierarchy map of the program in the order of execution, where the constructor is at the top of the map; edges and nodes are used as the two main parts </label><br/>
 	
 	<p class="questions" id="questions">6. When should Singleton be considered when which of the following criteria are satisfied: </p>
-	<input type="radio" id="answers" name="question6" value="a"> 1. Create a java class with a private constructor, 2. Create a way to control the instantiation of this class, 3. Add a private static variable unique of type is Singleton. and assign a new instance to unique the first time its created <br/>
-	<input type="radio" id="answers" name="question6" value="b"> 1. We can make sure that getInstance method is synchronized in some way, so the two threads can’t get near the state of execution, 2. We could create a Singleton but not using lazy instantiation <br/>
-	<input type="radio" id="answers" name="question6" value="c"> 1. Ownership of the single instance cannot be reasonably assigned, 2. Lazy initialization is desirable, 3. Global access is not otherwise provided for <br/>
-	<input type="radio" id="answers" name="question6" value="d"> 1. Ownership of the single instance can be assigned, 2. Lazy initialization is undesirable, 3. Global access in provided for <br/>
+	<input type="radio" id="answers" name="question6" value="a"> <label>1. Create a java class with a private constructor, 2. Create a way to control the instantiation of this class, 3. Add a private static variable unique of type is Singleton. and assign a new instance to unique the first time its created </label><br/>
+	<input type="radio" id="answers" name="question6" value="b"> <label>1. We can make sure that getInstance method is synchronized in some way, so the two threads can’t get near the state of execution, 2. We could create a Singleton but not using lazy instantiation </label><br/>
+	<input type="radio" id="answers" name="question6" value="c"> <label>1. Ownership of the single instance cannot be reasonably assigned, 2. Lazy initialization is desirable, 3. Global access is not otherwise provided for </label><br/>
+	<input type="radio" id="answers" name="question6" value="d"> <label>1. Ownership of the single instance can be assigned, 2. Lazy initialization is undesirable, 3. Global access in provided for </label><br/>
 	
 	<p class="questions" id="questions">7.What is a bug? </p>
-	<input type="radio" id="answers" name="question7" value="a"> an error or defect in software that may cause a program to malfunction  <br/>
-	<input type="radio" id="answers" name="question7" value="b"> a harmful microorganism<br/>
-	<input type="radio" id="answers" name="question7" value="c"> finding or fixing a program with debugging software <br/>
-	<input type="radio" id="answers" name="question7" value="d"> a logical error on a program causing a program to crash  <br/>
+	<input type="radio" id="answers" name="question7" value="a"> <label>an error or defect in software that may cause a program to malfunction  </label><br/>
+	<input type="radio" id="answers" name="question7" value="b"> <label>a harmful microorganism</label><br/>
+	<input type="radio" id="answers" name="question7" value="c"> <label>finding or fixing a program with debugging software </label><br/>
+	<input type="radio" id="answers" name="question7" value="d"> <label>a logical error on a program causing a program to crash  </label><br/>
 
 	<p class="questions" id="questions">8. What does unit testing do?</p>
-	<input type="radio" id="answers" name="question8" value="a"> where the input domain tends to split into partitions and it tests each partition   <br/>
-	<input type="radio" id="answers" name="question8" value="b"> a framework for writing tests<br/>
-	<input type="radio" id="answers" name="question8" value="c"> uses a random number generator to generate test cases  <br/>
-	<input type="radio" id="answers" name="question8" value="d"> looks for errors in a subsystem in isolation <br/>
+	<input type="radio" id="answers" name="question8" value="a"> <label>where the input domain tends to split into partitions and it tests each partition   </label><br/>
+	<input type="radio" id="answers" name="question8" value="b"> <label>a framework for writing tests</label><br/>
+	<input type="radio" id="answers" name="question8" value="c"> <label>uses a random number generator to generate test cases  </label><br/>
+	<input type="radio" id="answers" name="question8" value="d"> <label>looks for errors in a subsystem in isolation </label><br/>
 	
 	<p class="questions" id="questions">9. Why is the format of the URI of an RESTful API very important? </p>
-	<input type="radio" id="answers" name="question9" value="a"> because it may use plural to indicate that a specific type of resource is more than one <br/>
-	<input type="radio" id="answers" name="question9" value="b"> because the resources are dependent on other sources <br/>
-	<input type="radio" id="answers" name="question9" value="c"> because the client service programmer will need to know the URI inorder to appropriately write code that makes http calls to URIs  <br/>
-	<input type="radio" id="answers" name="question9" value="d"> because they are resistant to change <br/>
+	<input type="radio" id="answers" name="question9" value="a"> <label>because it may use plural to indicate that a specific type of resource is more than one </label><br/>
+	<input type="radio" id="answers" name="question9" value="b"> <label>because the resources are dependent on other sources </label><br/>
+	<input type="radio" id="answers" name="question9" value="c"> <label>because the client service programmer will need to know the URI inorder to appropriately write code that makes http calls to URIs  </label><br/>
+	<input type="radio" id="answers" name="question9" value="d"> <label>because they are resistant to change </label><br/>
 	
 	<p class="questions" id="questions">10. What level of the Richardson Maturity Model uses the Swam of POX (Plain Old XML)?</p>
-	<input type="radio" id="answers" name="question10" value="a"> Level 0 – Not Restful <br/>
-	<input type="radio" id="answers" name="question10" value="b"> Level 1 – Resource URI <br/>
-	<input type="radio" id="answers" name="question10" value="c"> Level 2 – HTTP Methods  <br/>
-	<input type="radio" id="answers" name="question10" value="d"> Level 3 – HATEOS <br/>
+	<input type="radio" id="answers" name="question10" value="a"> <label>Level 0 – Not Restful </label><br/>
+	<input type="radio" id="answers" name="question10" value="b"> <label>Level 1 – Resource URI </label><br/>
+	<input type="radio" id="answers" name="question10" value="c"> <label>Level 2 – HTTP Methods  </label><br/>
+	<input type="radio" id="answers" name="question10" value="d"> <label>Level 3 – HATEOS </label><br/>
 	
-	<center><input id="button" type="button" value= "Submit" onclick = "check();"></center>
-	</form>
+	{% if user.is_authenticated %}
+		<center><input id="button" type="button" value= "Submit" onclick = "checkandsubmit();"></center>
+		</form>
+		
+		<form id="oose2_form" method="post" action="{% url 'oose2' %}">
+		<center>
+		<div id="after_submit">
+		<p id="number_correct"></p>
+		{% csrf_token %}
+		<input type="hidden" name="oose2score" id="correct" />
+		</div>
+		</center>
+		</form>
 	
-	<form id="oose2_form" method="post" action="{% url 'oose2' %}">
-	<center>
-	<div id="after_submit">
-	<p id="number_correct"></p>
-	{% csrf_token %}
-	<input type="hidden" name="oose2score" id="correct" />
-	</div>
-	</center>
-	</form>
+	{% else %}
+		<center><input id="button" type="button" value="Submit" onclick = "check();"></center>
+		</form>
+		
+		<center>
+		<div id="after_submit">
+		<p id="number_correct"></p>
+		</div>
+		</center>
+	
+	{% endif %}
+	
 	
 {% endblock %}
