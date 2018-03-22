@@ -110,7 +110,7 @@ def af2(request):
 
 def forum(request):
     posts_list = ForumPost.objects.order_by('-date')
-    comments_list = Comment.objects.order_by('-date')
+    comments_list = Comment.objects.order_by('-date')[:3]
     context_dict = {'posts': posts_list, 'comments': comments_list}
     return render(request, 'computingcomms/forum.html', context_dict)
 
@@ -277,7 +277,7 @@ def show_post(request, post_slug):
 
     try:
         post = ForumPost.objects.get(slug=post_slug)
-        comments = Comment.objects.filter(post = post)
+        comments = Comment.objects.filter(post = post).order_by('-date')
         context_dict['post'] = post
         context_dict['comments'] = comments
     except:

@@ -38,19 +38,21 @@
 			{% if comments %}
 				<ul>
 `				{% for comment in comments %}
+				{% if post.question == comment.post.question %}
 				   <p id="comment">{{ comment.comment }}<br>
 				   {{ comment.user }} <br>
 				   {{ comment.date }} <br>
 				   {{ comment.image }}<br>
+				{% endif %}
 				   {% endfor %}
 				</ul>
 			    {% else %}
-				<p id="comment">There are no comments yet
+				<p id="comment">There are no comments yet</p>
 			    {% endif %}
 		{% endfor %}
 		</ul>    
 	    {% else %}
-		<strong>There are no posts present.</strong>
+		<p><strong>There are no posts present.</strong></p>
 	    {% endif %}
 	</div>
 
