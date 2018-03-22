@@ -91,8 +91,14 @@
 	<center><input id="button" type="button" value= "Submit" onclick = "check();"></center>
 	</form>
 	
+	<form id="oose2_form" method="post" action="{% url 'oose2' %}">
+	<center>
 	<div id="after_submit">
 	<p id="number_correct"></p>
+	{% csrf_token %}
+	<input type="hidden" name="oose2score" id="correct" />
 	</div>
+	</center>
+	</form>
 	
 {% endblock %}

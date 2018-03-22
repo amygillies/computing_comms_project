@@ -6,37 +6,6 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Quiz(models.Model):
-    name = models.CharField(max_length=32)
-    quizID = models.CharField(max_length=4)
-    subject = models.CharField(max_length=4)
-
-    def __str__(self):
-        return self.subject
-    
-class Question(models.Model):
-    name = models.CharField(max_length=128)
-    content = models.CharField(max_length=256)
-    quiz = models.ForeignKey(Quiz, on_delete=models.DO_NOTHING)
-
-    class Meta:
-        unique_together = (('quiz','name'),)
-
-    def __str__(self):
-        return self.name
-
-class Answer(models.Model):
-    answerID = models.CharField(max_length=4)
-    content = models.CharField(max_length=256)
-    correct = models.BooleanField(default = False)
-    question = models.ForeignKey(Question, on_delete=models.DO_NOTHING)
-
-    class Meta:
-        unique_together = (('question','answerID'),)
-
-    def __str__(self):
-        return self.answerID
-
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
     user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
@@ -74,3 +43,44 @@ class Comment(models.Model):
     def __str__(self):
         return self.user + " posted to " + self.post
     
+class JP2Score(models.Model):
+    jp2score = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return str(self.user)
+
+class CS2TScore(models.Model):
+    cs2tscore = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return str(self.user)
+
+class ADS2Score(models.Model):
+    ads2score = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return str(self.user)
+
+class AF2Score(models.Model):
+    af2score = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return str(self.user)
+
+class OOSE2Score(models.Model):
+    oose2score = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return str(self.user)
+
+class WAD2Score(models.Model):
+    wad2score = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return str(self.user)

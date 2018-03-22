@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from computingcomms.models import ForumPost, UserProfile, Comment
 from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm, UpdateProfile, CommentForm
+from computingcomms.forms import JP2ScoreForm, WAD2ScoreForm, CS2TScoreForm, OOSE2ScoreForm, ADS2ScoreForm, AF2ScoreForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -24,22 +25,88 @@ def quizzes(request):
     return render(request, 'computingcomms/quizzes.html', {})
 
 def jp2(request):
-    return render(request, 'computingcomms/jp2.html', {})
+    registered = False
+    if request.method == 'POST':
+        jp2_score_form = JP2ScoreForm(data=request.POST)
+
+        if jp2_score_form.is_valid():
+            user = request.user
+            jp2score = jp2_score_form.save(commit=False)
+            jp2score.user = user
+            jp2score.save()
+    else:
+        jp2_score_form = JP2ScoreForm()
+    return render(request, 'computingcomms/jp2.html', {'jp2_score_form': jp2_score_form, 'registered': registered,})
 
 def oose2(request):
-    return render(request, 'computingcomms/oose2.html', {})
+    registered = False
+    if request.method == 'POST':
+        oose2_score_form = OOSE2ScoreForm(data=request.POST)
+
+        if oose2_score_form.is_valid():
+            user = request.user
+            oose2score = oose2_score_form.save(commit=False)
+            oose2score.user = user
+            oose2score.save()
+    else:
+        oose2_score_form = OOSE2ScoreForm()
+    return render(request, 'computingcomms/oose2.html', {'oose2_score_form': oose2_score_form, 'registered': registered,})
 
 def wad2(request):
-    return render(request, 'computingcomms/wad2.html', {})
+    registered = False
+    if request.method == 'POST':
+        wad2_score_form = WAD2ScoreForm(data=request.POST)
+
+        if wad2_score_form.is_valid():
+            user = request.user
+            wad2score = wad2_score_form.save(commit=False)
+            wad2score.user = user
+            wad2score.save()
+    else:
+        wad2_score_form = WAD2ScoreForm()
+    return render(request, 'computingcomms/wad2.html', {'wad2_score_form': wad2_score_form, 'registered': registered,})
 
 def ads2(request):
-    return render(request, 'computingcomms/ads2.html', {})
+    registered = False
+    if request.method == 'POST':
+        ads2_score_form = ADS2ScoreForm(data=request.POST)
+
+        if ads2_score_form.is_valid():
+            user = request.user
+            ads2score = ads2_score_form.save(commit=False)
+            ads2score.user = user
+            ads2score.save()
+    else:
+        ads2_score_form = ADS2ScoreForm()
+    return render(request, 'computingcomms/ads2.html', {'ads2_score_form': ads2_score_form, 'registered': registered,})
 
 def cs2t(request):
-    return render(request, 'computingcomms/cs2t.html', {})
+    registered = False
+    if request.method == 'POST':
+        cs2t_score_form = CS2TScoreForm(data=request.POST)
+
+        if cs2t_score_form.is_valid():
+            user = request.user
+            cs2tscore = cs2t_score_form.save(commit=False)
+            cs2tscore.user = user
+            cs2tscore.save()
+    else:
+        cs2t_score_form = CS2TScoreForm()
+    return render(request, 'computingcomms/cs2t.html', {'cs2t_score_form': cs2t_score_form, 'registered': registered,})
 
 def af2(request):
-    return render(request, 'computingcomms/af2.html', {})
+    registered = False
+    if request.method == 'POST':
+        af2_score_form = AF2ScoreForm(data=request.POST)
+
+        if af2_score_form.is_valid():
+            user = request.user
+            af2score = af2_score_form.save(commit=False)
+            af2score.user = user
+            af2score.save()
+    else:
+        af2_score_form = AF2ScoreForm()
+    return render(request, 'computingcomms/af2.html', {'af2_score_form': af2_score_form, 'registered': registered,})
 
 def forum(request):
     posts_list = ForumPost.objects.order_by('-date')

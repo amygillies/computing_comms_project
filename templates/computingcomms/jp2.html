@@ -91,11 +91,17 @@
 	<input type="radio" id="answers" name="question10" value="c"> Double.INFINITY <br/>
 	<input type="radio" id="answers" name="question10" value="d"> null <br/>
 	
+	
 	<center><input id="button" type="button" value= "Submit" onclick = "check();"></center>
 	</form>
 	
-	<div id="after_submit">
+	<form id="jp2_form" method="post" action="{% url 'jp2' %}">
+	<center> <div id="after_submit">
 	<p id="number_correct"></p>
+	{% csrf_token %}
+	<input type="hidden" name="jp2score" id="correct" />
 	</div>
+	</center>
+	</form>
 	
 {% endblock %}

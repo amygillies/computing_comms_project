@@ -45,6 +45,11 @@ function check(){
 	}
 	
 	document.getElementById("after_submit").style.visibility = "visible";
+	document.getElementById("correct").value = correct;
 	document.getElementById("number_correct").innerHTML = "You got " + correct + " correct";
 	
+	var r = confirm("You got " + correct + " correct");
+	if (r == true) {
+		setTimeout(function(){document.getElementById("jp2_form").submit();}, 2000);
+	}
 }
