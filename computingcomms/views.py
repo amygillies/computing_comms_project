@@ -90,20 +90,23 @@ def add_image(request):
    
     return render(request, 'computingcomms/add_image.html', {'forum_form': forum_form, 'registered': registered,})
 
-def add_comment(request):
+def add_comment(request,post_slug):
+    print("adding comment")
     registered = False
+    try:
+        post = ForumPost.objects.get(slug=post_slug)
+    except:
+        print("failed")
+        post = None
     comment_form = CommentForm()
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
-        question = request.POST.get('question')
-        print (comment_form.is_valid())
 
         if comment_form.is_valid():
-
             user = request.user
             comment = comment_form.save(commit=False)
             comment.user = user
-            comment.post_id = question
+            comment.post = post
             comment.save()
             # redirect if the thing succeeded.
             return render(request, 'computingcomms/forum.html', {'comment_form': comment_form, 'registered': registered,})
@@ -203,7 +206,6 @@ def my_comments(request):
     return render(request, 'computingcomms/my_comments.html', context_dict)
 
 def show_post(request, post_slug):
-    print("at least we got here")
     context_dict = {}
 
     try:

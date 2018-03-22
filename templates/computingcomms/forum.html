@@ -42,18 +42,10 @@
 				   {{ comment.user }} <br>
 				   {{ comment.date }} <br>
 				   {{ comment.image }}<br>
-				   {% if user.is_authenticated %} 
-				   <a href="{% url 'add_comment' %}">Add Comment</a></p>
-				   {% else%}
-				   {% endif %}
 				   {% endfor %}
 				</ul>
 			    {% else %}
 				<p id="comment">There are no comments yet
-				{% if user.is_authenticated %} 
-				<a href="{% url 'add_comment' %}">Add Comment</a></p>
-				{% else%}
-				{% endif %}
 			    {% endif %}
 		{% endfor %}
 		</ul>    
