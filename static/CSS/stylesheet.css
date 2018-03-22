@@ -145,6 +145,13 @@ p {
 	top: 150px;
 	right: 80px
 }
+
+.quiz_buttons_position {
+	position: absolute;
+	top: 30px;
+	right: 60px
+}
+
 .scores{
 	position: relative;
 	top: 40px;
