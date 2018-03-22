@@ -1,0 +1,54 @@
+{% extends 'computingcomms/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/CSS/stylesheet.css"/>
+</head>
+
+{% block title_block %}
+     {{ post.question }}
+{% endblock %}
+
+{% block body_block %}
+	<div>
+		{% if user.is_authenticated %} 
+			<h3><p>Welcome {{ user.username }}</p></h3>
+		{% else %}
+			<h3><p>Welcome</p></h3>
+		{% endif %}
+	</div>
+
+    <div>
+    {% if post %}
+	<p>{{ post.question }}</p>
+	<p id="date">{{ post.date }}</p>
+	<p id="user">{{ post.user }}</p>
+        {% if post.picture %}
+	    <p><img src="{{ MEDIA_URL }}{{ post.picture }}" alt="no image"></p>
+        {% endif %}
+        {% if comments %}
+            {% for comment in comments %}
+                 <p id="comment">{{ comment.comment }}<br>
+				   {{ comment.user }} <br>
+				   {{ comment.date }} <br>
+				   {{ comment.image }}<br>
+		{% if user.is_authenticated %} 
+			<a href="{% url 'add_comment' %}">Add Comment</a></p>
+		{% else%}
+</p>
+		{% endif %}
+	{% endfor %}
+				</ul>
+	{% else %}
+				<p id="comment">There are no comments yet
+		{% if user.is_authenticated %} 
+				<a href="{% url 'add_comment' %}">Add Comment</a></p>
+				{% else%}
+				{% endif %}
+			    {% endif %}
+
+    {% else %}
+        <p>This post doesn't exist!</p>
+    {% endif %}
+    </div>
+{% endblock %}

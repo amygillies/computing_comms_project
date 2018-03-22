@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^my_questions/', views.my_questions, name='my_questions'),
     url(r'^my_comments/', views.my_comments, name='my_comments'),
     url(r'^faq.', views.faq, name='faq'),
-    url(r'^forum', views.forum, name='forum'),
+    url(r'^forum/$', views.forum, name='forum'),
     url(r'^add_question', views.add_question, name='add_question'),
     url(r'^add_image/$', views.add_image, name='add_image'),
     url(r'^add_comment', views.add_comment, name='add_comment'),
@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^sign_out', views.sign_out, name='sign_out'),
     url(r'^edit_account/', views.edit_account, name='edit_account'),
     url(r'^restricted/', views.restricted, name='restricted'),
+    url(r'^forum/(?P<post_slug>[\w\-]+)/$', views.show_post, name='show_post')
 ]

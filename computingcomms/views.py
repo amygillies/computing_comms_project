@@ -202,6 +202,21 @@ def my_comments(request):
     context_dict = {'posts': posts_list,}
     return render(request, 'computingcomms/my_comments.html', context_dict)
 
+def show_post(request, post_slug):
+    print("at least we got here")
+    context_dict = {}
+
+    try:
+        post = ForumPost.objects.get(slug=post_slug)
+        comments = Comment.objects.filter(post = post)
+        context_dict['post'] = post
+        context_dict['comments'] = comments
+    except:
+        context_dict['post'] = None
+        context_dict['comments'] = None
+
+    return render(request,'computingcomms/post.html' ,context_dict)
+
 @login_required
 def restricted(request):
     return HttpResponse("Since you're logged in, you can see this text!")

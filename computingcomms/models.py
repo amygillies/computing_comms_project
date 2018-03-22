@@ -55,6 +55,11 @@ class ForumPost(models.Model):
     picture = models.ImageField(upload_to='forum_images',blank=True)
     date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.question)
+        super(ForumPost, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.user

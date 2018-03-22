@@ -29,7 +29,7 @@
 	    {% if posts %}
 		<ul>
 		{% for post in posts %}
-			<p>{{ post.question }}</p>
+			<a href="{{post.slug}}"><p>{{ post.question }}</p></a>
 			<p id="date">{{ post.date }}</p>
 			<p id="user">{{ post.user }}</p>
                         {% if post.picture %}
