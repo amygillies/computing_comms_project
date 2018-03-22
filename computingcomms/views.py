@@ -129,7 +129,7 @@ def add_question(request):
             question.user = user
             question.save()
             # redirect if the thing succeeded.
-            return render(request, 'computingcomms/forum.html', {'forumQ_form': forumQ_form, 'registered': registered,})
+            return HttpResponseRedirect(reverse('forum'))
     
     return render(request, 'computingcomms/add_question.html', {'forumQ_form': forumQ_form, 'registered': registered,})
 
@@ -151,7 +151,7 @@ def add_image(request):
             else:
                 print("User has not submitted a picture")
             post.save()
-            return render(request, 'computingcomms/forum.html', {'forum_form': forum_form, 'registered': registered,})
+            return HttpResponseRedirect(reverse('forum'))
         else:
             print(forum_form.errors)
    
@@ -176,7 +176,7 @@ def add_comment(request,post_slug):
             comment.post = post
             comment.save()
             # redirect if the thing succeeded.
-            return render(request, 'computingcomms/forum.html', {'comment_form': comment_form, 'registered': registered,})
+            return HttpResponseRedirect(reverse('forum'))
     
     return render(request, 'computingcomms/add_comment.html', {'comment_form': comment_form, 'registered': registered,})
 
