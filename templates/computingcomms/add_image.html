@@ -21,16 +21,16 @@
 
 
 {% block body_block %}
-<center>
 
-	<form id = "forum_form" method = "post" action = "{% url 'add_image' %}" enctype="multipart/form-data">
-	
-	{% csrf_token %}
-	
-	{{ forum_form.as_p }}
+<script type="text/javascript" src = "/static/js/reload.js"></script>
 
-	<input type = "submit" name= "submit" value = "Add Image" />
+	<p><form id = "forum_form" method = "post" action = "{% url 'add_image' %}" enctype="multipart/form-data">
+	
+	<p>{% csrf_token %}
+	
+	<p>{{ forum_form.as_p }}
+
+	<p><input type = "submit" name= "submit" value = "Add Image" onclick="loadDoc()" />
 	</form>
 
-</center>
 {% endblock %}

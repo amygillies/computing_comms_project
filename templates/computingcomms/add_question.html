@@ -21,16 +21,16 @@
 
 
 {% block body_block %}
-<center>
 
-	<form id = "forumQ_form" method = "post" action = "{% url 'add_question' %} enctype = "multipart/form-data">
-	
-	{% csrf_token %}
-	
-	{{ forumQ_form.as_p }}
+<script type="text/javascript" src = "/static/js/reloadQ.js"></script>
 
-	<input type = "submit" name= "submit" value = "Add Question" />
+	<p><form id = "forumQ_form" method = "post" action = "{% url 'add_question' %} enctype = "multipart/form-data">
+	
+	<p>{% csrf_token %}
+	
+	<p>{{ forumQ_form.as_p }}
+
+	<p><input type = "submit" name= "submit" value = "Add Question" onclick="loadDoc()" />
 	</form>
 
-</center>
 {% endblock %}
