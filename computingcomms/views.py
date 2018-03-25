@@ -208,7 +208,16 @@ def user_login(request):
         return render(request, 'computingcomms/login.html', {})
 
 def my_account(request):
-    return render(request, 'computingcomms/my_account.html', {})
+    context_dict = {}
+    jp2Score = JP2Score.objects.filter(user=request.user).first()
+    wad2Score = WAD2Score.objects.filter(user=request.user).first()
+    oose2Score = OOSE2Score.objects.filter(user=request.user).first()
+    af2Score = AF2Score.objects.filter(user=request.user).first()
+    ads2Score = ADS2Score.objects.filter(user=request.user).first()
+    cs2tScore = CS2TScore.objects.filter(user=request.user).first()
+    context_dict = {'jp2Score': jp2Score, 'wad2Score': wad2Score, 'oose2Score': oose2Score, 'af2Score': af2Score, 'ads2Score': ads2Score, 'cs2tScore' : cs2tScore}
+    
+    return render(request, 'computingcomms/my_acccount.html', context_dict)
 
 def sign_out(request):
     logout(request)
