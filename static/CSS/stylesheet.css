@@ -3,6 +3,7 @@ h1 {
   	text-align: center;
    	color: #00ccff;
 	font-family: Bernard MT Condensed;
+	padding-left: 180px;
 }
 
 h2 {
@@ -10,6 +11,7 @@ h2 {
 	text-align: center;
 	color: #00ccff;
 	font-family: Bernard MT Condensed;
+	padding-left: 180px;
 }
 
 p {
@@ -80,7 +82,7 @@ p {
 
 .sidenav {
 	height: 100%;
-	width: 170px;
+	width: 180px;
 	position:fixed;
 	z-index: 1;
 	top: 0;
@@ -88,12 +90,13 @@ p {
 	background-color: #F0F8FF;
 	overflow-x: hidden;
 	padding-top: 15px;
+	
 }
 
 .sidenav a {
 	padding: 6px 2px 6px 2px;
 	text-decoration: none;
-	font-size: 26px;
+	font-size: 25px;
 	font-family: Calibri;
 	color: black;
 	display: block;
@@ -249,4 +252,8 @@ label {
 	margin-left: 30px;
 	display: flex;
 	padding-right: 100px;
+}
+
+table {
+	padding-left:180px;
 }
