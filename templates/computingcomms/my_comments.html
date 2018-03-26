@@ -23,7 +23,7 @@
 	<p><strong>The comments you have posted: </strong>
 	<ul>
 	    {% for comment in comments %}
-		{% if user == comments.user %}
+		{% if user == comment.user %}
 		    <p> {{comment.post}}<br>
 			{{comment.comment}} </p>
 		{% endif %}

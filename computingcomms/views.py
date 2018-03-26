@@ -278,7 +278,7 @@ def my_questions(request):
 def my_comments(request):
     posts_list = ForumPost.objects.order_by('-date')
     comments_list = Comment.objects.order_by('-date')
-    context_dict = {'posts': posts_list,}
+    context_dict = {'posts': posts_list, 'comments': comments_list}
     return render(request, 'computingcomms/my_comments.html', context_dict)
 
 def show_post(request, post_slug):
