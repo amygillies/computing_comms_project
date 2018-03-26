@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from computingcomms.models import ForumPost, UserProfile, Comment
+from computingcomms.models import ForumPost, UserProfile, Comment, JP2Score, WAD2Score, CS2TScore, OOSE2Score, ADS2Score, AF2Score
 from computingcomms.forms import UserForm, UserProfileForm, ForumPostForm, ForumQuestionForm, UpdateProfile, CommentForm
 from computingcomms.forms import JP2ScoreForm, WAD2ScoreForm, CS2TScoreForm, OOSE2ScoreForm, ADS2ScoreForm, AF2ScoreForm
 from django.contrib.auth import authenticate, login
@@ -217,7 +217,7 @@ def my_account(request):
     cs2tScore = CS2TScore.objects.filter(user=request.user).first()
     context_dict = {'jp2Score': jp2Score, 'wad2Score': wad2Score, 'oose2Score': oose2Score, 'af2Score': af2Score, 'ads2Score': ads2Score, 'cs2tScore' : cs2tScore}
     
-    return render(request, 'computingcomms/my_acccount.html', context_dict)
+    return render(request, 'computingcomms/my_account.html', context_dict)
 
 def sign_out(request):
     logout(request)

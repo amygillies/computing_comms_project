@@ -172,6 +172,12 @@ p {
 	margin-right: 30px;
 }
 
+.status {
+	position: absolute;
+	top: 30px;
+	right: 60px
+}
+
 .profile_pic {
 	position: relative;
 	left: 250px;

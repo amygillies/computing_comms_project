@@ -9,10 +9,10 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
     user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
-
     # The additional attributes we wish to include.
     picture = models.ImageField(upload_to='profile_images', blank=True)
     details = models.CharField(max_length=256)
+    
 
     # Override the __unicode__() method to return out something meaningful!
     # Remember if you use Python 2.7.x, define __unicode__ too!
