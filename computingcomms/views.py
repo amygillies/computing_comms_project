@@ -11,7 +11,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import Max
+from collections import OrderedDict
 
 
 # Create your views here.
@@ -212,15 +213,58 @@ def user_login(request):
 
 def my_account(request):
     context_dict = {}
-    jp2Score = JP2Score.objects.filter(user=request.user).first()
-    wad2Score = WAD2Score.objects.filter(user=request.user).first()
-    oose2Score = OOSE2Score.objects.filter(user=request.user).first()
-    af2Score = AF2Score.objects.filter(user=request.user).first()
-    ads2Score = ADS2Score.objects.filter(user=request.user).first()
-    cs2tScore = CS2TScore.objects.filter(user=request.user).first()
-    context_dict = {'jp2Score': jp2Score, 'wad2Score': wad2Score, 'oose2Score': oose2Score, 'af2Score': af2Score, 'ads2Score': ads2Score, 'cs2tScore' : cs2tScore}
+    jp2Scores = JP2Score.objects.filter(user=request.user)
+
+    if jp2Scores.exists():
+        maxjp2Score = jp2Scores.aggregate(Max('jp2score'))
+        maxjp2Score = maxjp2Score['jp2score__max']
+    else:
+        maxjp2Score = 0
+        
+    wad2Scores = WAD2Score.objects.filter(user=request.user)
+
+    if wad2Scores.exists():
+        maxwad2Score = wad2Scores.aggregate(Max('wad2score'))
+        maxwad2Score = maxwad2Score['wad2score__max']
+    else:
+        maxwad2Score = 0
     
-    return render(request, 'computingcomms/my_account.html', context_dict)
+    oose2Scores = OOSE2Score.objects.filter(user=request.user)
+
+    if oose2Scores.exists():
+        maxoose2Score = oose2Scores.aggregate(Max('oose2score'))
+        maxoose2Score = maxoose2Score['oose2score__max']
+    else:
+        maxoose2Score = 0
+        
+    af2Scores = AF2Score.objects.filter(user=request.user)
+
+    if af2Scores.exists():
+        maxaf2Score = af2Scores.aggregate(Max('af2score'))
+        maxaf2Score = maxaf2Score['af2score__max']
+    else:
+        maxaf2Score = 0
+        
+    ads2Scores = ADS2Score.objects.filter(user=request.user)
+
+    if ads2Scores.exists():
+        maxads2Score = ads2Scores.aggregate(Max('ads2score'))
+        maxads2Score = maxads2Score['ads2score__max']
+    else:
+        maxads2Score = 0
+        
+    cs2tScores = CS2TScore.objects.filter(user=request.user)
+
+    if cs2tScores.exists():
+        maxcs2tScore = cs2tScores.aggregate(Max('cs2tscore'))
+        maxcs2tScore = maxcs2tScore['cs2tscore__max']
+    else:
+        maxcs2tScore = 0
+        
+    scores_dict = {'JP2 Score': maxjp2Score, 'WAD2 Score': maxwad2Score, 'OOSE2 Score': maxoose2Score, 'AF2 Score': maxaf2Score, 'ADS2 Score': maxads2Score, 'CS2T Score' : maxcs2tScore}
+    od = OrderedDict(sorted(scores_dict.items(), key=lambda(v,k):(k,v), reverse=True))
+    
+    return render(request, 'computingcomms/my_account.html', {'data':od})
 
 def sign_out(request):
     logout(request)
