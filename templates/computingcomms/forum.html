@@ -19,24 +19,24 @@
 {% block body_block %}
 	<div>
 		{% if user.is_authenticated %} 
-			<h3><p>Welcome {{ user.username }}</p></h3>
+			<h3 id="welcome">Welcome {{ user.username }}</h3>
 		{% else %}
-			<h3><p>Welcome</p></h3>
+			<h3 id="welcome">Welcome</h3>
 		{% endif %}
 	</div>
 
 	<div>
 	    {% if posts %}
-		<ul>
+		<ul id="sidebar">
 		{% for post in posts %}
-			<a href="{{post.slug}}"><p>{{ post.question }}</p></a>
-			<p id="date">{{ post.date }}</p>
+			<a href="{{post.slug}}"><p id="forumquestion">{{ post.question }}</p></a>
 			<p id="user">{{ post.user }}</p>
                         {% if post.picture %}
 			    <p><img src="{{ MEDIA_URL }}{{ post.picture }}" alt="no image"></p>
                         {% endif %}
+			<p id="date">{{ post.date }}</p>
 			{% if comments %}
-				<ul>
+				<ul id="sidebar">
 `				{% for comment in comments %}
 				{% if post.question == comment.post.question %}
 				   <p id="comment">{{ comment.comment }}<br>

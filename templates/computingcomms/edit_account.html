@@ -21,7 +21,6 @@
 
 
 {% block body_block %}
-<center>
 	<div class="container">
 	<form method = "post">
 	
@@ -29,12 +28,11 @@
 	
 	{{ form.as_p }}
 
-	<input type = "submit" name= "Submit" value = "Edit" />
+	<center><p id="submitformat"> <input type = "submit" name= "submit" value = "Submit" /> </p></center>
 	</form>
 
 	
 
 </div>
-</center>
 
 {% endblock %}

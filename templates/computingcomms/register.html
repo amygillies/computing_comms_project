@@ -31,15 +31,15 @@
 	<form id = "user_form" method = "post" action = "{% url 'register' %}" enctype = "multipart/form-data">
 	<p>{% csrf_token %}
 	{{ user_form.as_p }}
-	{{ profile_form.as_p }}
+	{{ profile_form.as_p }} </p>
 
 	
 	<p><input id = "sButton" type="radio" name="status" value="student"> Student<br>
   	<input id = "lButton" type="radio" name="status" value="lecturer"> Lecturer<br>
-  	<input id = "obutton" type="radio" name="status" value="other"> Other
+  	<input id = "obutton" type="radio" name="status" value="other"> Other </p>
 
 
-	<p><input type = "submit" name= "submit" value = "Register" /><p>
+	<center><p id="submitformat"><input type = "submit" name= "submit" value = "Register" /></p></center>
 	</form>
 
 {% endif %}
