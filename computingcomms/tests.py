@@ -34,7 +34,7 @@ class CommsTests(TestCase):
     def test_using_CSS(self):
         response = self.client.get(reverse('home'))
 
-        # Check if is there an image in index page
+        # Check if is there an attempt to use CSS
         self.assertIn('type="text/css"'.lower(), response.content.decode('ascii').lower())
 
     def test_register_uses_form(self):

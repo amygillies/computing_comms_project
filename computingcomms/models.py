@@ -31,7 +31,7 @@ class ForumPost(models.Model):
         super(ForumPost, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.user
+        return self.question
 
 class Comment(models.Model):
     comment = models.CharField(max_length=128)
@@ -41,7 +41,7 @@ class Comment(models.Model):
     post = models.ForeignKey('computingcomms.ForumPost', related_name = 'comment' , on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return self.user + " posted to " + self.post
+        return self.comment
     
 class JP2Score(models.Model):
     jp2score = models.IntegerField()
