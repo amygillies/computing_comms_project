@@ -17,7 +17,6 @@ def populate():
     questions = {"Why am I getting a 'no module named Django' error message?": {"comments": WADComments,"user":["Keaton Greg","BadStorage"]}, "Why am I getting the wrong answer when working out the number of paths on my CFG diagram?": {"comments" : OOSEComments,"user":["Tracey Jones","ForReal"]}, "Why am I not getting any output when I am searching for a value I know exists in a database?": {"comments": CFComments,"user":["Nathan Fulton","Passwords"]}}
 
     for question, questions_data in questions.items():
-        print("\n")
         q = add_q(question,questions_data["user"])
         for c in questions_data["comments"]:
             add_comment(q, c["comment"], c["user"], c["date"])
@@ -34,8 +33,6 @@ def add_comment(question, comment, user, date):
     return c
 
 def add_q(question,data):
-    print(data[0],type(data[0]))
-    print(data[1],type(data[1]))
     here = User.objects.get_or_create(username=data[0],password=data[1])[0]
     q = ForumPost.objects.get_or_create(question=question,user=here)[0]
     q.save()
@@ -44,3 +41,4 @@ def add_q(question,data):
 if __name__ == '__main__':
     print("Starting Computing Comms population script...")
     populate()
+    print("Population Complete!")

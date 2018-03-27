@@ -13,13 +13,23 @@
 	<div>
 		<center><h1>Computing Comms</h1></center>
 	</div>
-	<div>
+        {% if post %}
+	    <div>
 		<center><h3>{{ post.question }}</h3></center>
-	</div>
+	    </div>
+        {% else %}
+            <div>
+                <center><h3>This question doesn't exist!</h3></center></br>
+                {% if user.is_authenticated %}
+                    <center>Would you like to <a href="{% url 'add_question' %}">ask</a> this question?</center>
+                {% endif %}
+            </div>
+        {% endif %}
 {% endblock %}
 
 
 {% block body_block %}
+    {% if post %}
 	{% if comments %}
             <ul>
             {% for comment in comments %}
@@ -60,5 +70,6 @@
 
 	{% endif %}
 	</div>
+    {% endif %}
 
 {% endblock %}

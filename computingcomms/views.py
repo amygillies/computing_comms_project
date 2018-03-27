@@ -127,9 +127,12 @@ def add_question(request):
             user = request.user
             question = forumQ_form.save(commit=False)
             question.user = user
-            question.save()
-            # redirect if the thing succeeded.
-            return HttpResponseRedirect(reverse('forum'))
+            try:
+                question.save()
+                # redirect if the thing succeeded.
+                return HttpResponseRedirect(reverse('forum'))
+            except:
+                return HttpResponse("Error, something went wrong :(")
     
     return render(request, 'computingcomms/add_question.html', {'forumQ_form': forumQ_form, 'registered': registered,})
 
