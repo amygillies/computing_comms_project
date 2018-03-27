@@ -31,7 +31,7 @@
 {% block body_block %}
     {% if post %}
 	{% if comments %}
-            <ul>
+            <ul id="sidebar">
             {% for comment in comments %}
                 <p id="comment">{{ comment.comment }}<br>
 				{{ comment.user }} <br>
