@@ -262,7 +262,7 @@ def my_account(request):
         maxcs2tScore = 0
         
     scores_dict = {'JP2 Score': maxjp2Score, 'WAD2 Score': maxwad2Score, 'OOSE2 Score': maxoose2Score, 'AF2 Score': maxaf2Score, 'ADS2 Score': maxads2Score, 'CS2T Score' : maxcs2tScore}
-    od = OrderedDict(sorted(scores_dict.items(), key=lambda(v,k):(k,v), reverse=True))
+    od = OrderedDict(sorted(scores_dict.items(), key=lambda kv: (kv[1], kv[0]), reverse=True))
     
     return render(request, 'computingcomms/my_account.html', {'data':od})
 
