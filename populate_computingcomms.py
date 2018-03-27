@@ -37,7 +37,6 @@ def add_q(question,data):
     print(data[0],type(data[0]))
     print(data[1],type(data[1]))
     here = User.objects.get_or_create(username=data[0],password=data[1])[0]
-    NewUser = UserProfile.objects.get_or_create(user=here)[0]
     q = ForumPost.objects.get_or_create(question=question,user=here)[0]
     q.save()
     return q
