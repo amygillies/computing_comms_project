@@ -44,6 +44,7 @@ class Comment(models.Model):
         return self.comment
     
 class JP2Score(models.Model):
+    # stores the score each times a user does a quiz
     jp2score = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 

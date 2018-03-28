@@ -26,6 +26,7 @@ def quizzes(request):
     return render(request, 'computingcomms/quizzes.html', {})
 
 def jp2(request):
+    # retrieves the score from the jp2 quiz and saves it to the corresponding user in the admin.py
     registered = False
     if request.method == 'POST':
         jp2_score_form = JP2ScoreForm(data=request.POST)
@@ -40,6 +41,7 @@ def jp2(request):
     return render(request, 'computingcomms/jp2.html', {'jp2_score_form': jp2_score_form, 'registered': registered,})
 
 def oose2(request):
+    # retrieves the score from the oose2 quiz and saves it to the corresponding user in the admin.py
     registered = False
     if request.method == 'POST':
         oose2_score_form = OOSE2ScoreForm(data=request.POST)
@@ -54,6 +56,7 @@ def oose2(request):
     return render(request, 'computingcomms/oose2.html', {'oose2_score_form': oose2_score_form, 'registered': registered,})
 
 def wad2(request):
+    # retrieves the score from the wad2 quiz and saves it to the corresponding user in the admin.py
     registered = False
     if request.method == 'POST':
         wad2_score_form = WAD2ScoreForm(data=request.POST)
@@ -68,6 +71,7 @@ def wad2(request):
     return render(request, 'computingcomms/wad2.html', {'wad2_score_form': wad2_score_form, 'registered': registered,})
 
 def ads2(request):
+    # retrieves the score from the ads2 quiz and saves it to the corresponding user in the admin.py
     registered = False
     if request.method == 'POST':
         ads2_score_form = ADS2ScoreForm(data=request.POST)
@@ -82,6 +86,7 @@ def ads2(request):
     return render(request, 'computingcomms/ads2.html', {'ads2_score_form': ads2_score_form, 'registered': registered,})
 
 def cs2t(request):
+    # retrieves the score from the cs2t quiz and saves it to the corresponding user in the admin.py
     registered = False
     if request.method == 'POST':
         cs2t_score_form = CS2TScoreForm(data=request.POST)
@@ -96,6 +101,7 @@ def cs2t(request):
     return render(request, 'computingcomms/cs2t.html', {'cs2t_score_form': cs2t_score_form, 'registered': registered,})
 
 def af2(request):
+    # retrieves the score from the af2 quiz and saves it to the corresponding user in the admin.py
     registered = False
     if request.method == 'POST':
         af2_score_form = AF2ScoreForm(data=request.POST)
@@ -212,17 +218,24 @@ def user_login(request):
         return render(request, 'computingcomms/login.html', {})
 
 def my_account(request):
+    #retrieves each score from database
+    
     context_dict = {}
+
+    #filters each score by user for jp2
     jp2Scores = JP2Score.objects.filter(user=request.user)
 
+    #finds the highest jp2 score, if not done the quiz then sets it to 0
     if jp2Scores.exists():
         maxjp2Score = jp2Scores.aggregate(Max('jp2score'))
         maxjp2Score = maxjp2Score['jp2score__max']
     else:
         maxjp2Score = 0
-        
+
+    #filters each score by user for wad2
     wad2Scores = WAD2Score.objects.filter(user=request.user)
 
+    #finds the highest wad2score, otherwise 0 etc..
     if wad2Scores.exists():
         maxwad2Score = wad2Scores.aggregate(Max('wad2score'))
         maxwad2Score = maxwad2Score['wad2score__max']
@@ -260,7 +273,8 @@ def my_account(request):
         maxcs2tScore = maxcs2tScore['cs2tscore__max']
     else:
         maxcs2tScore = 0
-        
+
+    #stores the results in a dictionary, uses an ordered dictionary to store it
     scores_dict = {'JP2 Score': maxjp2Score, 'WAD2 Score': maxwad2Score, 'OOSE2 Score': maxoose2Score, 'AF2 Score': maxaf2Score, 'ADS2 Score': maxads2Score, 'CS2T Score' : maxcs2tScore}
     od = OrderedDict(sorted(scores_dict.items(), key=lambda kv: (kv[1], kv[0]), reverse=True))
     
