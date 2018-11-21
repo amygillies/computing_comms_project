@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html>
 <head>
   <title>RunMate</title>
@@ -7,11 +10,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="style.css" rel="stylesheet" />
+  <link href={% static "CSS/style.css" %} rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -22,7 +24,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#"><img src="img/logo.png" height="25" ></a>
+    <a class="navbar-brand" href="#"><img src="/static/img/logo.png" height="25" ></a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-main">
       <ul class="nav navbar-nav navbar-right">
@@ -34,7 +36,7 @@
 </nav>
 
 <div id="home">
-  <div class="landing-text">
+  <div class="landing-text" style="background-image: url(../static/img/running.jpg); background-size:cover">
     <h1>RUNMATE</h1>
     <h3>Click the button below to upload your run</h3>
     <a href="#data" class="btn btn-default btn-lg">Upload your run</a>
@@ -57,6 +59,10 @@
       <div>
       <a href="#" class="btn btn-default btn-lg">Upload Another Run</a>
       </div>
+	<div class="map">
+		<link rel="stylesheet" href="\runmate_project\leaflet\leaflet.css" />
+		<script src="\runmate_project\leaflet\leaflet.css"></script>
+	</div>
     </div>
   </div>
 </div>
